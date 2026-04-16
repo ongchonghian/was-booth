@@ -1,0 +1,19 @@
+{
+  "name": "was-booth",
+  "version": "1.0.0",
+  "main": "replace_index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jscodeshift": "^17.3.0",
+    "react-codemod": "^5.4.4"
+  }
+}

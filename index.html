@@ -5,14 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WAS Booth Infographic</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Plus Jakarta Sans', sans-serif; }
+      @media (prefers-reduced-motion: no-preference) {
+        .flip-hint {
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+        .group\/card:hover .flip-hint {
+          animation: flipHint 900ms ease-in-out infinite alternate;
+        }
+      }
+      @keyframes flipHint {
+        from { transform: rotateY(-10deg); }
+        to { transform: rotateY(10deg); }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
 
-    <script>
+    <script type="text/babel">
+      const { useState, createContext, useContext } = React;
+
       const createLucideIcon = (iconData) => {
         return (props) => {
           const [tagName, attrs, children] = iconData;
@@ -31,19 +54,11 @@
       };
 
       const {
-        Fish: FishData,
-        Trophy: TrophyData,
-        ClipboardList: ClipboardListData,
-        Gauge: GaugeData,
-        WifiOff: WifiOffData,
-        ScanLine: ScanLineData,
-        Users: UsersData,
-        Target: TargetData,
-        ArrowRight: ArrowRightData,
-        CheckCircle2: CheckCircle2Data,
-        Timer: TimerData,
-        MessageSquare: MessageSquareData,
-        CalendarCheck: CalendarCheckData,
+        Fish: FishData, Trophy: TrophyData, ClipboardList: ClipboardListData,
+        Gauge: GaugeData, WifiOff: WifiOffData, ScanLine: ScanLineData,
+        Users: UsersData, Target: TargetData, ArrowRight: ArrowRightData,
+        CheckCircle2: CheckCircle2Data, Timer: TimerData,
+        MessageSquare: MessageSquareData, CalendarCheck: CalendarCheckData,
         Sparkles: SparklesData,
       } = window.lucide;
 
@@ -62,8 +77,7 @@
       const CalendarCheck = createLucideIcon(CalendarCheckData);
       const Sparkles = createLucideIcon(SparklesData);
 
-      function WasSgFarmAppBoothInfographic() {
-        const pillars = [
+const pillars = [
           {
             icon: ClipboardList,
             title: "Less manual farm admin",
@@ -208,1007 +222,460 @@
           "Prove offline-resilient behaviour actually works in the field.",
           "Show how better records create better traceability.",
         ];
+      // --- Compound Components ---
+      const Booth = ({ children, className = "" }) => (
+        <div className={`min-h-screen bg-slate-50 text-slate-900 selection:bg-sky-100 selection:text-slate-900 ${className}`}>
+          <div className="max-w-7xl mx-auto p-6 lg:p-12 space-y-12">
+            {children}
+          </div>
+        </div>
+      );
 
-        return React.createElement(
-          "div",
-          {
-            className:
-              "min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-100 selection:text-emerald-900",
-          },
-          React.createElement(
-            "div",
-            { className: "max-w-7xl mx-auto p-6 lg:p-12 space-y-12" },
+      Booth.Hero = () => (
+        <section className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 text-white shadow-2xl">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.12),transparent_24%)]" />
+          <div className="relative grid lg:grid-cols-[1.35fr_0.75fr] gap-8 p-8 md:p-12">
+            
+            <div className="flex flex-col justify-center">
+              <div className="flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.24em] text-white/80 font-bold">
+                <Sparkles className="h-4 w-4" /> Dex × SGFarmApp × WAS
+              </div>
 
-            React.createElement(
-              "section",
-              {
-                className:
-                  "relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white shadow-2xl",
-              },
-              React.createElement("div", {
-                className:
-                  "absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.12),transparent_24%)]",
-              }),
-              React.createElement(
-                "div",
-                {
-                  className:
-                    "relative grid lg:grid-cols-[1.35fr_0.75fr] gap-8 p-8 md:p-12",
-                },
-                React.createElement(
-                  "div",
-                  { className: "flex flex-col justify-center" },
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.24em] text-white/80 font-bold",
-                    },
-                    React.createElement(Sparkles, { className: "h-4 w-4" }),
-                    " Dex × SGFarmApp × WAS",
-                  ),
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "col-span-1 md:col-span-3 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-3xl p-8 text-white shadow-lg mt-8 relative overflow-hidden",
-                    },
-                    React.createElement("div", {
-                      className:
-                        "absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl",
-                    }),
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "relative z-10 flex flex-col md:flex-row items-center justify-between gap-6",
-                      },
-                      React.createElement(
-                        "div",
-                        { className: "flex-1" },
-                        React.createElement(
-                          "h2",
-                          {
-                            className: "text-2xl font-black mb-2 tracking-tight",
-                          },
-                          "Real-Time Leaderboard App",
-                        ),
-                        React.createElement(
-                          "p",
-                          {
-                            className:
-                              "text-emerald-50 text-sm leading-relaxed max-w-2xl font-medium",
-                          },
-                          "A standalone React web app displayed on a TV at the booth. It polls the Gamification Service to show live rankings of the Top 10 loggers, active Bingo boards, and a scrolling activity feed—driving competitive engagement without touching the core backend.",
-                        ),
-                      ),
-                      React.createElement(
-                        "div",
-                        { className: "flex-shrink-0" },
-                        React.createElement(
-                          "span",
-                          {
-                            className:
-                              "inline-block bg-white text-teal-700 font-black px-6 py-3 rounded-xl text-sm uppercase tracking-widest shadow-sm",
-                          },
-                          "Live on Booth TV",
-                        ),
-                      ),
-                    ),
-                  ),
-                  React.createElement(
-                    "h1",
-                    {
-                      className:
-                        "mt-6 text-3xl md:text-5xl font-black leading-tight max-w-4xl tracking-tight",
-                    },
-                    "Booth Strategy: Use Mini-games to Turn Curiosity Into Product Understanding.",
-                  ),
-                  React.createElement(
-                    "p",
-                    {
-                      className:
-                        "mt-6 text-base md:text-lg leading-relaxed text-white/90 max-w-3xl font-medium",
-                    },
-                    "The goal is not just to attract booth traffic. The goal is to help visitors quickly understand that SGFarmApp makes aquaculture data collection easier, more traceable, and more useful.",
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "mt-10 flex flex-wrap gap-3" },
-                    [
-                      "short games",
-                      "real farm workflows",
-                      "faster understanding",
-                      "qualified leads",
-                    ].map((item) =>
-                      React.createElement(
-                        "span",
-                        {
-                          key: item,
-                          className:
-                            "rounded-full border border-white/25 bg-white/15 px-5 py-2.5 text-sm font-bold shadow-lg backdrop-blur-sm transition-all hover:bg-white/25 cursor-default hover:scale-105",
-                        },
-                        item,
-                      ),
-                    ),
-                  ),
-                ),
-                React.createElement(
-                  "div",
-                  {
-                    className:
-                      "rounded-[2.5rem] bg-white/10 backdrop-blur-xl border border-white/20 p-8 shadow-3xl self-center",
-                  },
-                  React.createElement(
-                    "div",
-                    { className: "flex items-center gap-2 mb-4" },
-                    React.createElement("span", {
-                      className:
-                        "h-2 w-2 rounded-full bg-cyan-400 animate-pulse",
-                    }),
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "text-xs uppercase tracking-[0.25em] font-black text-white/70",
-                      },
-                      "The core outcome",
-                    ),
-                  ),
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "text-2xl md:text-3xl font-black leading-tight tracking-tight",
-                    },
-                    "Make SGFarmApp feel easy, useful, and credible in under 5 minutes.",
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "mt-8 space-y-3" },
-                    [
-                      "Better than a static product pitch",
-                      "Better than a passive screen demo",
-                      "Designed to create follow-up conversations",
-                    ].map((point) =>
-                      React.createElement(
-                        "div",
-                        {
-                          key: point,
-                          className:
-                            "flex items-center gap-3 rounded-2xl bg-white/5 py-4 px-6 border border-white/5 hover:bg-white/10 transition-all cursor-default",
-                        },
-                        React.createElement("div", {
-                          className: "h-1.5 w-1.5 rounded-full bg-emerald-400",
-                        }),
-                        React.createElement(
-                          "span",
-                          { className: "text-sm font-bold text-white/90" },
-                          point,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+              <div className="col-span-1 md:col-span-3 bg-gradient-to-r from-sky-700 to-blue-800 rounded-3xl p-8 text-white shadow-lg mt-8 relative overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl" />
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-black mb-2 tracking-tight">Real-Time Leaderboard App</h2>
+                    <p className="text-emerald-50 text-sm leading-relaxed max-w-2xl font-medium">
+                      A standalone React web app displayed on a TV at the booth. It polls the Gamification Service to show live rankings of the Top 10 loggers, active Bingo boards, and a scrolling activity feed—driving competitive engagement without touching the core backend.
+                    </p>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <span className="inline-block bg-white text-teal-700 font-black px-6 py-3 rounded-2xl text-sm uppercase tracking-widest shadow-sm">
+                      Live on Booth TV
+                    </span>
+                  </div>
+                </div>
+              </div>
 
-            React.createElement(
-              "section",
-              { className: "grid lg:grid-cols-2 gap-8" },
-              React.createElement(
-                "div",
-                {
-                  className:
-                    "group rounded-[2.5rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10 transition-all hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)] flex flex-col",
-                },
-                React.createElement(
-                  "div",
-                  { className: "flex items-center gap-4 mb-10" },
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "rounded-2xl bg-emerald-600 p-3 shadow-lg shadow-emerald-200",
-                    },
-                    React.createElement(Target, {
-                      className: "h-6 w-6 text-white",
-                    }),
-                  ),
-                  React.createElement(
-                    "h2",
-                    {
-                      className:
-                        "text-2xl md:text-3xl font-black tracking-tight",
-                    },
-                    "Key Booth Message",
-                  ),
-                ),
-                React.createElement(
-                  "div",
-                  { className: "grid sm:grid-cols-2 gap-5 flex-grow" },
-                  pillars.map((item) => {
-                    const Icon = item.icon;
-                    return React.createElement(
-                      "div",
-                      {
-                        key: item.title,
-                        className:
-                          "group/card rounded-3xl bg-slate-50 border border-slate-200 p-6 transition-all hover:bg-white hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/5 cursor-default flex flex-col h-full",
-                      },
-                      React.createElement(
-                        "div",
-                        { className: "flex items-center gap-4 mb-4" },
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "rounded-2xl bg-emerald-100 text-emerald-700 p-3 transition-colors group-hover/card:bg-emerald-600 group-hover/card:text-white",
-                          },
-                          React.createElement(Icon, { className: "h-5 w-5" }),
-                        ),
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "text-lg font-black leading-tight group-hover/card:text-emerald-900 transition-colors",
-                          },
-                          item.title,
-                        ),
-                      ),
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-sm text-slate-500 font-medium leading-relaxed group-hover/card:text-slate-600 transition-colors",
-                        },
-                        item.text,
-                      ),
-                    );
-                  }),
-                ),
-              ),
+              <h1 className="mt-6 text-3xl md:text-5xl font-black leading-tight max-w-4xl tracking-tight">
+                Booth Strategy: Use Mini-games to Turn Curiosity Into Product Understanding.
+              </h1>
+              <p className="mt-6 text-base md:text-lg leading-relaxed text-white/90 max-w-3xl font-medium">
+                The goal is not just to attract booth traffic. The goal is to help visitors quickly understand that SGFarmApp makes aquaculture data collection easier, more traceable, and more useful.
+              </p>
 
-              React.createElement(
-                "div",
-                {
-                  className:
-                    "rounded-[2.5rem] bg-slate-900 text-white shadow-2xl p-8 lg:p-10 relative overflow-hidden flex flex-col",
-                },
-                React.createElement("div", {
-                  className:
-                    "absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[100px] -mr-32 -mt-32",
-                }),
-                React.createElement(
-                  "div",
-                  { className: "relative z-10 flex flex-col flex-grow" },
-                  React.createElement(
-                    "div",
-                    { className: "flex items-center gap-4 mb-10" },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "rounded-2xl bg-cyan-500 p-3 shadow-lg shadow-cyan-900/40",
-                      },
-                      React.createElement(MessageSquare, {
-                        className: "h-6 w-6 text-slate-950",
-                      }),
-                    ),
-                    React.createElement(
-                      "h2",
-                      {
-                        className:
-                          "text-2xl md:text-3xl font-black tracking-tight",
-                      },
-                      "Core Takeaway",
-                    ),
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "space-y-4 mb-10" },
-                    remember.map((item) =>
-                      React.createElement(
-                        "div",
-                        {
-                          key: item,
-                          className:
-                            "group/item rounded-3xl border border-white/10 bg-white/5 p-5 transition-all hover:bg-white/10 hover:border-cyan-500/30 flex items-start gap-4",
-                        },
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "h-6 w-6 shrink-0 mt-0.5 rounded-full border border-cyan-500/50 flex items-center justify-center text-[10px] font-black text-cyan-400 opacity-60 group-hover/item:opacity-100 transition-opacity",
-                          },
-                          "✓",
-                        ),
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "text-sm md:text-base font-bold leading-relaxed text-slate-300 group-hover/item:text-white transition-colors",
-                          },
-                          item,
-                        ),
-                      ),
-                    ),
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "mt-auto pt-6" },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "rounded-[2rem] bg-cyan-400 text-slate-950 p-7 shadow-xl shadow-cyan-950/20",
-                      },
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-xs font-black uppercase tracking-[0.25em] opacity-40 mb-2",
-                        },
-                        "Reader-friendly recap",
-                      ),
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-base md:text-xl font-black leading-snug",
-                        },
-                        "The games are only the hook. Their real purpose is to make the app’s value obvious fast.",
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+              <div className="mt-10 flex flex-wrap gap-3">
+                {["short games", "real farm workflows", "faster understanding", "qualified leads"].map(item => (
+                  <span key={item} className="rounded-full border border-white/25 bg-white/15 px-5 py-2.5 text-sm font-bold shadow-lg backdrop-blur-sm transition-all hover:bg-white/25 cursor-default hover:scale-105">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-            React.createElement(
-              "section",
-              {
-                className:
-                  "rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-12",
-              },
-              React.createElement(
-                "div",
-                {
-                  className:
-                    "flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12",
-                },
-                React.createElement(
-                  "div",
-                  null,
-                  React.createElement(
-                    "div",
-                    { className: "flex items-center gap-2 mb-2" },
-                    React.createElement("div", {
-                      className: "h-1.5 w-10 rounded-full bg-emerald-600",
-                    }),
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "text-sm uppercase tracking-[0.3em] text-emerald-700 font-black",
-                      },
-                      "Engagement Layer",
-                    ),
-                  ),
-                  React.createElement(
-                    "h2",
-                    {
-                      className:
-                        "text-3xl md:text-4xl font-black tracking-tight",
-                    },
-                    "Recommended Mini-Games",
-                  ),
-                ),
-                React.createElement(
-                  "div",
-                  {
-                    className:
-                      "rounded-2xl bg-emerald-50 border border-emerald-100 text-emerald-700 px-8 py-4 text-sm font-black shadow-sm",
-                  },
-                  "4 Distinct Booth Hooks",
-                ),
-              ),
+            <div className="rounded-[2.5rem] bg-white/10 backdrop-blur-xl border border-white/20 p-8 shadow-3xl self-center">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
+                <div className="text-xs uppercase tracking-[0.25em] font-black text-white/70">The core outcome</div>
+              </div>
+              <div className="text-2xl md:text-3xl font-black leading-tight tracking-tight">
+                Make SGFarmApp feel easy, useful, and credible in under 5 minutes.
+              </div>
+              <div className="mt-8 space-y-3">
+                {["Better than a static product pitch", "Better than a passive screen demo", "Designed to create follow-up conversations"].map(point => (
+                  <div key={point} className="flex items-center gap-3 rounded-2xl bg-white/5 py-4 px-6 border border-white/5 hover:bg-white/10 transition-all cursor-default">
+                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                    <span className="text-sm font-bold text-white/90">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-              React.createElement(
-                "div",
-                { className: "grid md:grid-cols-2 xl:grid-cols-4 gap-6" },
-                games.map((game) =>
-                  React.createElement(
-                    "div",
-                    {
-                      key: game.name,
-                      className:
-                        "group/card flex flex-col h-full rounded-[2.5rem] border border-slate-200 bg-slate-50/50 p-8 transition-all hover:bg-white hover:border-emerald-200 hover:shadow-2xl hover:shadow-emerald-500/10 cursor-default",
-                    },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "flex items-start justify-between gap-4 mb-6 flex-wrap",
-                      },
-                      React.createElement(
-                        "div",
-                        { className: "space-y-1" },
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "text-xl font-black leading-tight tracking-tight text-slate-900 group-hover/card:text-emerald-700 transition-colors",
-                          },
-                          game.name,
-                        ),
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "flex items-center gap-2 text-xs text-slate-400 font-black uppercase tracking-widest",
-                          },
-                          React.createElement(Timer, {
-                            className: "h-3.5 w-3.5",
-                          }),
-                          game.time,
-                        ),
-                      ),
-                      React.createElement(
-                        "span",
-                        {
-                          className:
-                            "shrink-0 rounded-xl bg-slate-900 text-white px-3 py-1.5 text-[9px] font-black uppercase tracking-widest shadow-lg shadow-slate-200 mt-1",
-                        },
-                        game.fit,
-                      ),
-                    ),
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "text-sm text-slate-500 font-bold leading-relaxed mb-8 flex-grow",
-                      },
-                      game.goal,
-                    ),
-                    React.createElement(
-                      "div",
-                      { className: "mt-auto space-y-6" },
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "rounded-3xl bg-white/80 border border-slate-200 p-5 shadow-inner",
-                        },
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "text-[9px] uppercase tracking-[0.3em] text-slate-400 font-black mb-4",
-                          },
-                          "Trainee Focus",
-                        ),
-                        React.createElement(
-                          "div",
-                          { className: "flex flex-wrap gap-2.5" },
-                          game.teaches.map((item) =>
-                            React.createElement(
-                              "span",
-                              {
-                                key: item,
-                                className:
-                                  "rounded-xl bg-emerald-50 border border-emerald-100/50 px-3 py-2 text-[9px] font-black text-emerald-700 uppercase tracking-tight",
-                              },
-                              item,
-                            ),
-                          ),
-                        ),
-                      ),
-                      React.createElement(
-                        "div",
-                        {
-                          className: "space-y-4 pt-4 border-t border-slate-100",
-                        },
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "text-xs text-slate-400 font-bold italic leading-relaxed",
-                          },
-                          React.createElement(
-                            "span",
-                            {
-                              className:
-                                "block not-italic font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1",
-                            },
-                            "Strategic Intent",
-                          ),
-                          '"' + game.whyItWorks + '"',
-                        ),
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "text-xs text-slate-500 font-bold leading-relaxed",
-                          },
-                          React.createElement(
-                            "span",
-                            {
-                              className:
-                                "block font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1",
-                            },
-                            "Implementation Effort",
-                          ),
-                          game.effort,
-                        ),
-                        React.createElement(
-                          "div",
-                          {
-                            className: "flex items-center justify-between pt-2",
-                          },
-                          React.createElement(
-                            "span",
-                            {
-                              className:
-                                "text-[10px] font-black text-slate-300 uppercase tracking-widest",
-                            },
-                            "Lead Capture",
-                          ),
-                          React.createElement(
-                            "span",
-                            {
-                              className:
-                                "text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full",
-                            },
-                            game.capture,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+          </div>
+        </section>
+      );
 
-            React.createElement(
-              "section",
-              { className: "grid lg:grid-cols-2 gap-8" },
-              React.createElement(
-                "div",
-                {
-                  className:
-                    "rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10",
-                },
-                React.createElement(
-                  "div",
-                  { className: "flex items-center gap-4 mb-12" },
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "rounded-2xl bg-emerald-600 p-3 shadow-lg shadow-emerald-200 text-white",
-                    },
-                    React.createElement(ArrowRight, { className: "h-6 w-6" }),
-                  ),
-                  React.createElement(
-                    "h2",
-                    {
-                      className:
-                        "text-2xl md:text-3xl font-black tracking-tight",
-                    },
-                    "Visitor Journey",
-                  ),
-                ),
-                React.createElement(
-                  "div",
-                  { className: "space-y-5" },
-                  boothFlow.map((item, idx) =>
-                    React.createElement(
-                      "div",
-                      {
-                        key: item.title,
-                        className:
-                          "group/item relative rounded-3xl bg-slate-50 border border-slate-200 p-6 transition-all hover:bg-white hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/5",
-                      },
-                      React.createElement(
-                        "div",
-                        { className: "flex items-center gap-6" },
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "h-14 w-14 shrink-0 rounded-full bg-slate-900 text-white flex items-center justify-center font-black text-xl transition-all group-hover/item:bg-emerald-600 group-hover/item:scale-110 shadow-xl",
-                          },
-                          idx + 1,
-                        ),
-                        React.createElement(
-                          "div",
-                          { className: "text-xl font-black text-slate-900" },
-                          item.title,
-                        ),
-                      ),
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "mt-4 ml-20 text-sm md:text-base text-slate-500 font-bold leading-relaxed group-hover/item:text-slate-600 transition-colors",
-                        },
-                        item.text,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+      const GameContext = createContext();
 
-              React.createElement(
-                "div",
-                {
-                  className:
-                    "rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10 flex flex-col",
-                },
-                React.createElement(
-                  "div",
-                  { className: "flex items-center gap-4 mb-12" },
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "rounded-2xl bg-emerald-600 p-4 shadow-lg shadow-emerald-200 text-white",
-                    },
-                    React.createElement(Users, { className: "h-6 w-6" }),
-                  ),
-                  React.createElement(
-                    "h2",
-                    {
-                      className:
-                        "text-2xl md:text-3xl font-black tracking-tight",
-                    },
-                    "Staffing Model",
-                  ),
-                ),
-                React.createElement(
-                  "div",
-                  { className: "space-y-5 flex-grow" },
-                  staffing.map((item) =>
-                    React.createElement(
-                      "div",
-                      {
-                        key: item.role,
-                        className:
-                          "group/item rounded-3xl bg-slate-50 border border-slate-200 p-7 transition-all hover:bg-white hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/5",
-                      },
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-xl font-black text-slate-900 mb-2 group-hover/item:text-emerald-700 transition-colors",
-                        },
-                        item.role,
-                      ),
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-sm md:text-base text-slate-500 font-bold leading-relaxed group-hover/item:text-slate-600 transition-colors",
-                        },
-                        item.text,
-                      ),
-                    ),
-                  ),
-                ),
-                React.createElement(
-                  "div",
-                  { className: "mt-10 pt-10 border-t border-slate-100" },
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "rounded-[2rem] bg-amber-50 border border-amber-200 p-7 flex items-start gap-5 shadow-sm shadow-amber-100",
-                    },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "h-10 w-10 shrink-0 rounded-full bg-amber-200 flex items-center justify-center text-amber-700 font-black text-xl",
-                      },
-                      "!",
-                    ),
-                    React.createElement(
-                      "div",
-                      { className: "space-y-1" },
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-xs font-black uppercase tracking-[0.3em] text-amber-700 opacity-60",
-                        },
-                        "Rule of Thumb",
-                      ),
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-base font-black text-amber-950 leading-snug",
-                        },
-                        "Keep roles simple. Avoid overstaffing with overlapping responsibilities.",
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+      Booth.Games = ({ children }) => {
+        const [selectedId, setSelectedId] = useState(null);
+        const toggle = (id) => setSelectedId(prev => prev === id ? null : id);
+        return (
+          <GameContext.Provider value={{ selectedId, toggle }}>
+            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {children}
+            </div>
+          </GameContext.Provider>
+        );
+      };
 
-            React.createElement(
-              "section",
-              { className: "grid lg:grid-cols-2 gap-8" },
-              React.createElement(
-                "div",
-                {
-                  className:
-                    "rounded-[3.5rem] bg-slate-900 text-white shadow-2xl p-8 lg:p-12 relative overflow-hidden",
-                },
-                React.createElement("div", {
-                  className:
-                    "absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 blur-[120px] -ml-48 -mb-48",
-                }),
-                React.createElement(
-                  "div",
-                  { className: "relative z-10 flex flex-col h-full" },
-                  React.createElement(
-                    "div",
-                    { className: "flex items-center gap-5 mb-10" },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "rounded-2xl bg-cyan-500 p-4 shadow-xl shadow-cyan-900/40 text-slate-950",
-                      },
-                      React.createElement(Trophy, { className: "h-7 w-7" }),
-                    ),
-                    React.createElement(
-                      "h2",
-                      {
-                        className:
-                          "text-3xl md:text-4xl font-black tracking-tight italic",
-                      },
-                      "North Star Metrics",
-                    ),
-                  ),
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "text-base text-slate-400 font-bold leading-relaxed mb-12 max-w-xl",
-                    },
-                    "Measure these KPIs to ensure booth activity is translating into high-quality commercial opportunities.",
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "grid gap-4 mb-12" },
-                    successMetrics.map((item) =>
-                      React.createElement(
-                        "div",
-                        {
-                          key: item.label,
-                          className:
-                            "group/item rounded-[2rem] border border-white/10 bg-white/5 p-7 transition-all hover:bg-white/10 hover:border-cyan-500/30",
-                        },
-                        React.createElement(
-                          "div",
-                          {
-                            className: "flex items-center justify-between mb-3",
-                          },
-                          React.createElement(
-                            "div",
-                            {
-                              className:
-                                "text-lg font-black text-white group-hover/item:text-cyan-400 transition-colors tracking-tight uppercase",
-                            },
-                            item.label,
-                          ),
-                          React.createElement("div", {
-                            className:
-                              "h-2 w-2 rounded-full bg-cyan-500 group-hover/item:scale-150 transition-transform shadow-[0_0_10px_#22d3ee]",
-                          }),
-                        ),
-                        React.createElement(
-                          "div",
-                          {
-                            className:
-                              "text-sm text-slate-400 font-bold leading-relaxed group-hover/item:text-slate-200 transition-colors",
-                          },
-                          item.detail,
-                        ),
-                      ),
-                    ),
-                  ),
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "mt-auto rounded-[2rem] bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 p-8 shadow-2xl flex items-center justify-between",
-                    },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "text-lg md:text-2xl font-black leading-tight max-w-sm",
-                      },
-                      "Focus on lead quality over raw traffic volumes.",
-                    ),
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "h-14 w-14 shrink-0 rounded-full bg-slate-950/20 flex items-center justify-center font-black text-2xl transition-transform hover:translate-x-2",
-                      },
-                      "→",
-                    ),
-                  ),
-                ),
-              ),
+      Booth.GameCard = ({ id, game }) => {
+        const { selectedId, toggle } = useContext(GameContext);
+        const isSelected = selectedId === id;
 
-              React.createElement(
-                "div",
-                {
-                  className:
-                    "rounded-[3.5rem] bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white shadow-2xl p-8 lg:p-12 overflow-hidden relative border border-emerald-500/20",
-                },
-                React.createElement("div", {
-                  className:
-                    "absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,213,238,0.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.2),transparent_30%)]",
-                }),
-                React.createElement(
-                  "div",
-                  { className: "relative z-10 flex flex-col h-full" },
-                  React.createElement(
-                    "div",
-                    { className: "flex items-center gap-5 mb-10" },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "rounded-2xl bg-white p-4 shadow-xl text-emerald-600",
-                      },
-                      React.createElement(CheckCircle2, {
-                        className: "h-7 w-7",
-                      }),
-                    ),
-                    React.createElement(
-                      "h2",
-                      {
-                        className:
-                          "text-3xl md:text-4xl font-black tracking-tight",
-                      },
-                      "Operating Model",
-                    ),
-                  ),
-                  React.createElement(
-                    "div",
-                    {
-                      className:
-                        "rounded-[2.5rem] border border-white/20 bg-white/10 backdrop-blur-2xl p-10 text-3xl md:text-4xl font-black leading-none tracking-tighter shadow-2xl text-center",
-                    },
-                    "2 Stations. 1 Target.",
-                    React.createElement("br"),
-                    React.createElement(
-                      "span",
-                      { className: "text-cyan-300" },
-                      "Total Visibility.",
-                    ),
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "grid sm:grid-cols-2 gap-6 mt-12" },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "group/item rounded-3xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-all",
-                      },
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-6",
-                        },
-                        "Winning Edge",
-                      ),
-                      React.createElement(
-                        "ul",
-                        { className: "space-y-5" },
-                        [
-                          "Handles hybrid flow",
-                          "High energy focus",
-                          "Conversion native",
-                        ].map((li) =>
-                          React.createElement(
-                            "li",
-                            {
-                              key: li,
-                              className:
-                                "flex items-center gap-4 text-sm font-black",
-                            },
-                            React.createElement("span", {
-                              className:
-                                "h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]",
-                            }),
-                            li,
-                          ),
-                        ),
-                      ),
-                    ),
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "group/item rounded-3xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-all",
-                      },
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-6",
-                        },
-                        "Key Items",
-                      ),
-                      React.createElement(
-                        "ul",
-                        { className: "space-y-5" },
-                        [
-                          "Booth Scripts",
-                          "Visual Copy",
-                          "Lead Fields",
-                          "Sync Station",
-                        ].map((li) =>
-                          React.createElement(
-                            "li",
-                            {
-                              key: li,
-                              className:
-                                "flex items-center gap-4 text-sm font-black",
-                            },
-                            React.createElement("span", {
-                              className:
-                                "h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.8)]",
-                            }),
-                            li,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "mt-auto pt-12" },
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "group/item rounded-[2.5rem] bg-white/10 border border-white/20 p-8 backdrop-blur-xl flex items-start gap-6 hover:bg-white/20 transition-all shadow-xl",
-                      },
-                      React.createElement(CalendarCheck, {
-                        className: "h-8 w-8 text-emerald-300 shrink-0",
-                      }),
-                      React.createElement(
-                        "div",
-                        {
-                          className:
-                            "text-sm md:text-lg font-bold leading-relaxed text-white/95",
-                        },
-                        "Deploy this model for internal alignment, stakeholder buying, and booth-floor execution.",
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+        return (
+          <div 
+            className="group/card perspective-[1000px] h-full cursor-pointer"
+            style={{ perspective: "1000px" }}
+            onClick={() => toggle(id)}
+          >
+            <div className={`h-full ${isSelected ? "" : "flip-hint"}`}>
+              <div 
+                className="relative w-full h-full grid transition-transform duration-300 ease-out active:scale-[0.98]"
+                style={{
+                  transformStyle: "preserve-3d",
+                  transform: isSelected ? "rotateY(180deg)" : "rotateY(0deg)",
+                  transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+                }}
+              >
+              {/* FRONT */}
+              <div 
+                className="flex flex-col rounded-[2.5rem] border border-slate-200 bg-slate-50/50 p-8 transition-all group-hover/card:bg-white group-hover/card:border-sky-200 group-hover/card:shadow-2xl group-hover/card:shadow-sky-500/10"
+                style={{ gridArea: "1 / 1", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+              >
+                <div className="flex items-start justify-between gap-4 mb-6 flex-wrap">
+                  <div className="space-y-1">
+                    <div className="text-xl font-black leading-tight tracking-tight text-slate-900 group-hover/card:text-sky-800 transition-colors">
+                      {game.name}
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-slate-400 font-black uppercase tracking-widest">
+                      <Timer className="h-3.5 w-3.5" /> {game.time}
+                    </div>
+                  </div>
+                  <span className="shrink-0 rounded-2xl bg-slate-900 text-white px-3 py-1.5 text-[9px] font-black uppercase tracking-widest shadow-lg shadow-slate-200 mt-1">
+                    {game.fit}
+                  </span>
+                </div>
+                
+                <div className="text-sm text-slate-500 font-bold leading-relaxed mb-8 flex-grow">
+                  {game.goal}
+                </div>
+
+                <div className="mt-auto space-y-6">
+                  <div className="rounded-3xl bg-white/80 border border-slate-200 p-5 shadow-inner">
+                    <div className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-black mb-4">
+                      Trainee Focus
+                    </div>
+                    <div className="flex flex-wrap gap-2.5">
+                      {game.teaches.map(item => (
+                        <span key={item} className="rounded-2xl bg-sky-50 border border-sky-100/50 px-3 py-2 text-[9px] font-black text-sky-800 uppercase tracking-tight">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 pt-4 border-t border-slate-100">
+                    <div className="text-xs text-slate-400 font-bold italic leading-relaxed">
+                      <span className="block not-italic font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1">Strategic Intent</span>
+                      "{game.whyItWorks}"
+                    </div>
+                    <div className="text-xs text-slate-500 font-bold leading-relaxed">
+                      <span className="block font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1">Implementation Effort</span>
+                      {game.effort}
+                    </div>
+                    <div className="flex items-center justify-between pt-2">
+                      <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Lead Capture</span>
+                      <span className="text-[10px] font-black text-sky-700 bg-sky-50 px-3 py-1.5 rounded-full">{game.capture}</span>
+                    </div>
+                  </div>
+
+                  <div className="text-center pt-2 mt-2 border-t border-slate-100/50">
+                    <span className="text-[10px] font-bold text-sky-700 uppercase tracking-widest group-hover/card:underline">
+                      Flip to view gameplay steps
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* BACK */}
+              <div 
+                className="flex flex-col rounded-[2.5rem] border border-sky-200 bg-white p-8 shadow-2xl shadow-sky-500/10"
+                style={{ gridArea: "1 / 1", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+              >
+                <h4 className="text-sm font-black text-sky-700 uppercase tracking-[0.2em] mb-6 flex items-center gap-2 pb-4 border-b border-slate-100">
+                  <ArrowRight className="h-4 w-4" /> Gameplay Steps
+                </h4>
+                <ol className="space-y-3 flex-grow">
+                  {game.steps && game.steps.map((step, stepIdx) => (
+                    <li key={stepIdx} className="text-sm font-medium text-slate-700 bg-slate-50/50 p-3 rounded-2xl flex items-start gap-3 border border-slate-100">
+                      <CheckCircle2 className="h-5 w-5 text-sky-600 mt-0.5 flex-shrink-0" />
+                      <span>{step.replace(/^\d+\.\s*/, '')}</span>
+                    </li>
+                  ))}
+                </ol>
+                <div className="text-center pt-4 mt-6 border-t border-slate-100">
+                  <span className="text-[10px] font-bold text-sky-700 uppercase tracking-widest group-hover/card:underline">
+                    Flip back to overview
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+        );
+      };
+
+      Booth.Pillars = ({ items }) => (
+        <div className="group rounded-[2.5rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10 transition-all hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)] flex flex-col">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="rounded-2xl bg-sky-700 p-3 shadow-lg shadow-sky-200">
+              <Target className="h-6 w-6 text-white" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black tracking-tight">Key Booth Message</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-5 flex-grow">
+            {items.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="group/card rounded-3xl bg-slate-50 border border-slate-200 p-6 transition-all hover:bg-white hover:border-sky-200 hover:shadow-xl hover:shadow-sky-500/5 cursor-default flex flex-col h-full">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="rounded-2xl bg-sky-100 text-sky-800 p-3 transition-colors group-hover/card:bg-sky-700 group-hover/card:text-white">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="text-lg font-black leading-tight group-hover/card:text-slate-900 transition-colors">
+                      {item.title}
+                    </div>
+                  </div>
+                  <div className="text-sm text-slate-500 font-medium leading-relaxed group-hover/card:text-slate-600 transition-colors">
+                    {item.text}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+
+      Booth.Takeaways = ({ items }) => (
+        <div className="rounded-[2.5rem] bg-slate-900 text-white shadow-2xl p-8 lg:p-10 relative overflow-hidden flex flex-col">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] -mr-32 -mt-32" />
+          <div className="relative z-10 flex flex-col flex-grow">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="rounded-2xl bg-blue-500 p-3 shadow-lg shadow-blue-900/40">
+                <MessageSquare className="h-6 w-6 text-slate-950" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-black tracking-tight">Core Takeaway</h2>
+            </div>
+            <div className="space-y-4 mb-10">
+              {items.map((item) => (
+                <div key={item} className="group/item rounded-3xl border border-white/10 bg-white/5 p-5 transition-all hover:bg-white/10 hover:border-blue-500/30 flex items-start gap-4">
+                  <div className="h-6 w-6 shrink-0 mt-0.5 rounded-full border border-cyan-500/50 flex items-center justify-center text-[10px] font-black text-blue-400 opacity-60 group-hover/item:opacity-100 transition-opacity">
+                    ✓
+                  </div>
+                  <div className="text-sm md:text-base font-bold leading-relaxed text-slate-300 group-hover/item:text-white transition-colors">
+                    {item}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-auto pt-6">
+              <div className="rounded-[2rem] bg-blue-400 text-slate-950 p-7 shadow-xl shadow-cyan-950/20">
+                <div className="text-xs font-black uppercase tracking-[0.25em] opacity-40 mb-2">Reader-friendly recap</div>
+                <div className="text-base md:text-xl font-black leading-snug">
+                  The games are only the hook. Their real purpose is to make the app’s value obvious fast.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+      Booth.Flow = ({ items }) => (
+        <div className="rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="rounded-2xl bg-sky-700 p-3 shadow-lg shadow-sky-200 text-white">
+              <ArrowRight className="h-6 w-6" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black tracking-tight">Visitor Journey</h2>
+          </div>
+          <div className="space-y-5">
+            {items.map((item, idx) => (
+              <div key={item.title} className="group/item relative rounded-3xl bg-slate-50 border border-slate-200 p-6 transition-all hover:bg-white hover:border-sky-200 hover:shadow-xl hover:shadow-sky-500/5">
+                <div className="flex items-center gap-6">
+                  <div className="h-14 w-14 shrink-0 rounded-full bg-slate-900 text-white flex items-center justify-center font-black text-xl transition-all group-hover/item:bg-sky-700 group-hover/item:scale-110 shadow-xl">
+                    {idx + 1}
+                  </div>
+                  <div className="text-xl font-black text-slate-900">{item.title}</div>
+                </div>
+                <div className="mt-4 ml-20 text-sm md:text-base text-slate-500 font-bold leading-relaxed group-hover/item:text-slate-600 transition-colors">
+                  {item.text}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+
+      Booth.Staffing = ({ items }) => (
+        <div className="rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10 flex flex-col">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="rounded-2xl bg-sky-700 p-4 shadow-lg shadow-sky-200 text-white">
+              <Users className="h-6 w-6" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black tracking-tight">Staffing Model</h2>
+          </div>
+          <div className="space-y-5 flex-grow">
+            {items.map((item) => (
+              <div key={item.role} className="group/item rounded-3xl bg-slate-50 border border-slate-200 p-7 transition-all hover:bg-white hover:border-sky-200 hover:shadow-xl hover:shadow-sky-500/5">
+                <div className="text-xl font-black text-slate-900 mb-2 group-hover/item:text-sky-800 transition-colors">
+                  {item.role}
+                </div>
+                <div className="text-sm md:text-base text-slate-500 font-bold leading-relaxed group-hover/item:text-slate-600 transition-colors">
+                  {item.text}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 pt-10 border-t border-slate-100">
+            <div className="rounded-[2rem] bg-amber-50 border border-amber-200 p-7 flex items-start gap-5 shadow-sm shadow-amber-100">
+              <div className="h-10 w-10 shrink-0 rounded-full bg-amber-200 flex items-center justify-center text-amber-700 font-black text-xl">!</div>
+              <div className="space-y-1">
+                <div className="text-xs font-black uppercase tracking-[0.3em] text-amber-700 opacity-60">Rule of Thumb</div>
+                <div className="text-base font-black text-amber-950 leading-snug">
+                  Keep roles simple. Avoid overstaffing with overlapping responsibilities.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+      Booth.Metrics = ({ items }) => (
+        <div className="rounded-[3.5rem] bg-slate-900 text-white shadow-2xl p-8 lg:p-12 relative overflow-hidden">
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[120px] -ml-48 -mb-48" />
+          <div className="relative z-10 flex flex-col h-full">
+            <div className="flex items-center gap-5 mb-10">
+              <div className="rounded-2xl bg-blue-500 p-4 shadow-xl shadow-blue-900/40 text-slate-950">
+                <Trophy className="h-7 w-7" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight italic">North Star Metrics</h2>
+            </div>
+            <div className="text-base text-slate-400 font-bold leading-relaxed mb-12 max-w-xl">
+              Measure these KPIs to ensure booth activity is translating into high-quality commercial opportunities.
+            </div>
+            <div className="grid gap-4 mb-12">
+              {items.map((item) => (
+                <div key={item.label} className="group/item rounded-[2rem] border border-white/10 bg-white/5 p-7 transition-all hover:bg-white/10 hover:border-blue-500/30">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-lg font-black text-white group-hover/item:text-blue-400 transition-colors tracking-tight uppercase">
+                      {item.label}
+                    </div>
+                    <div className="h-2 w-2 rounded-full bg-blue-500 group-hover/item:scale-150 transition-transform shadow-[0_0_10px_#22d3ee]" />
+                  </div>
+                  <div className="text-sm text-slate-400 font-bold leading-relaxed group-hover/item:text-slate-200 transition-colors">
+                    {item.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-auto rounded-[2rem] bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 p-8 shadow-2xl flex items-center justify-between">
+              <div className="text-lg md:text-2xl font-black leading-tight max-w-sm">
+                Focus on lead quality over raw traffic volumes.
+              </div>
+              <div className="h-14 w-14 shrink-0 rounded-full bg-slate-950/20 flex items-center justify-center font-black text-2xl transition-transform hover:translate-x-2">
+                →
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+      Booth.Setup = () => (
+        <div className="rounded-[3.5rem] bg-gradient-to-br from-slate-900 via-sky-900 to-slate-900 text-white shadow-2xl p-8 lg:p-12 overflow-hidden relative border border-sky-500/20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,213,238,0.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.2),transparent_30%)]" />
+          <div className="relative z-10 flex flex-col h-full">
+            <div className="flex items-center gap-5 mb-10">
+              <div className="rounded-2xl bg-white p-4 shadow-xl text-sky-700">
+                <CheckCircle2 className="h-7 w-7" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight">Operating Model</h2>
+            </div>
+            <div className="rounded-[2.5rem] border border-white/20 bg-white/10 backdrop-blur-2xl p-10 text-3xl md:text-4xl font-black leading-none tracking-tighter shadow-2xl text-center">
+              2 Stations. 1 Target.<br /><span className="text-blue-300">Total Visibility.</span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-6 mt-12">
+              <div className="group/item rounded-3xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-all">
+                <div className="text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-6">Winning Edge</div>
+                <ul className="space-y-5">
+                  {["Handles hybrid flow", "High energy focus", "Conversion native"].map((li) => (
+                    <li key={li} className="flex items-center gap-4 text-sm font-black">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" /> {li}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="group/item rounded-3xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-all">
+                <div className="text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-6">Key Items</div>
+                <ul className="space-y-5">
+                  {["Booth Scripts", "Visual Copy", "Lead Fields", "Sync Station"].map((li) => (
+                    <li key={li} className="flex items-center gap-4 text-sm font-black">
+                      <span className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_12px_rgba(34,211,238,0.8)]" /> {li}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="mt-auto pt-12">
+              <div className="group/item rounded-[2.5rem] bg-white/10 border border-white/20 p-8 backdrop-blur-xl flex items-start gap-6 hover:bg-white/20 transition-all shadow-xl">
+                <CalendarCheck className="h-8 w-8 text-sky-300 shrink-0" />
+                <div className="text-sm md:text-lg font-bold leading-relaxed text-white/95">
+                  Deploy this model for internal alignment, stakeholder buying, and booth-floor execution.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+      function WasSgFarmAppBoothInfographic() {
+        return (
+          <Booth>
+            <Booth.Hero />
+
+            <section className="grid lg:grid-cols-2 gap-8">
+              <Booth.Pillars items={pillars} />
+              <Booth.Takeaways items={remember} />
+            </section>
+
+            <section className="rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-12">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="h-1.5 w-10 rounded-full bg-sky-700" />
+                    <div className="text-sm uppercase tracking-[0.3em] text-sky-800 font-black">Engagement Layer</div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tight">Recommended Mini-Games</h2>
+                </div>
+                <div className="rounded-2xl bg-sky-50 border border-emerald-100 text-sky-800 px-8 py-4 text-sm font-black shadow-sm">
+                  4 Distinct Booth Hooks
+                </div>
+              </div>
+              <Booth.Games>
+                {games.map((game, idx) => (
+                  <Booth.GameCard key={game.name} id={idx} game={game} />
+                ))}
+              </Booth.Games>
+            </section>
+
+            <section className="grid lg:grid-cols-2 gap-8">
+              <Booth.Flow items={boothFlow} />
+              <Booth.Staffing items={staffing} />
+            </section>
+
+            <section className="grid lg:grid-cols-2 gap-8">
+              <Booth.Metrics items={successMetrics} />
+              <Booth.Setup />
+            </section>
+
+          </Booth>
         );
       }
 
       ReactDOM.createRoot(document.getElementById("root")).render(
-        React.createElement(WasSgFarmAppBoothInfographic),
+        <WasSgFarmAppBoothInfographic />
       );
     </script>
   </body>
