@@ -4,6 +4,7 @@ import {
   ClipboardList,
   Gauge,
   WifiOff,
+  ScanLine,
   Users,
   Target,
   ArrowRight,
@@ -18,92 +19,92 @@ export default function WasSgFarmAppBoothInfographic() {
   const pillars = [
     {
       icon: ClipboardList,
-      title: "Faster farm recording",
-      text: "Show how daily records can be quicker, cleaner, and easier to capture.",
+      title: "Less manual farm admin",
+      text: "Show that daily farm records can be faster, cleaner, and easier to capture.",
     },
     {
       icon: Fish,
-      title: "End-to-end traceability",
-      text: "Show how batches, locations, and farm events stay linked over time.",
+      title: "Real operational traceability",
+      text: "Demonstrate how batches, locations, and farm events can stay linked over time.",
     },
     {
       icon: Gauge,
-      title: "Clearer farm insight",
-      text: "Show how better records support better visibility and decisions.",
+      title: "Useful farm insights",
+      text: "Help visitors see that better records lead to better visibility and decisions.",
     },
     {
       icon: WifiOff,
-      title: "Built for field conditions",
-      text: "Show that work can continue even when connectivity is unreliable.",
+      title: "Field-ready reliability",
+      text: "Make offline-resilient workflows feel concrete rather than theoretical.",
     },
   ];
 
   const games = [
     {
-      name: "Daily Log Challenge",
+      name: "Daily Log Quest",
       time: "1–2 min",
       fit: "Best for quick engagement",
-      goal: "Show how quick, guided logging can make daily farm work easier.",
-      teaches: ["daily logging", "worker simplicity", "routine completion"],
-      whyItWorks: "Easy to understand and directly tied to day-to-day farm work.",
-      capture: "QR: quick demo + trial interest",
-      
+      goal: "Gamify daily log completion by turning routine actions into a multi-tier streak ladder.",
+      teaches: ["daily habits", "log completion", "farm routine"],
+      whyItWorks: "Uses existing metrics to provide instant, loud animated feedback without backend changes.",
+      capture: "QR for app trial + streak challenge",
+      effort: "Low: Reuses existing 'todayLogCount' from HomeViewModel. Just needs the new UI Overlay + Lottie animations.",
     },
     {
       name: "Ops Bingo",
       time: "2–3 min",
-      fit: "Best for feature discovery",
-      goal: "Show how one app can support multiple farm workflows in one place.",
-      teaches: ["workflow coverage", "feature discovery", "record completeness"],
-      whyItWorks: "Makes the breadth of SGFarmApp easy to grasp at a glance.",
-      capture: "QR: feature guide + demo follow-up",
-      
+      fit: "Best for exploring features",
+      goal: "Encourage workers to explore different log types (Feed, Grade, Sample) to fill a Bingo card.",
+      teaches: ["feature discovery", "workflow variety", "comprehensive logging"],
+      whyItWorks: "Drives horizontal adoption using chunky, tactile UI tiles and confetti rewards.",
+      capture: "QR for full feature list + demo",
+      effort: "Medium: Requires a new bottom sheet UI and querying 6 existing local DAOs to determine tile states.",
     },
     {
-      name: "Offline Sync Challenge",
+      name: "Sync Clean Badge",
       time: "1 min",
       fit: "Best trust builder",
-      goal: "Show that key farm tasks can still be completed and synced later.",
-      teaches: ["offline logging", "sync later", "field reliability"],
-      whyItWorks: "Turns a hidden product strength into something visible and memorable.",
-      capture: "QR: offline workflow demo",
-      
+      goal: "Gamify offline-first hygiene by rewarding workers when they clear all pending records.",
+      teaches: ["offline logging", "sync habits", "field reliability"],
+      whyItWorks: "Turns a mundane data sync action into a satisfying, badge-earning moment.",
+      capture: "Badge or QR at sync station",
+      effort: "Low: Hooks directly into existing CacheSyncManager completion callbacks. Minor UI overlay work.",
     },
     {
-      name: "Growth Snapshot Quiz",
+      name: "Sampling Micro-Quiz",
       time: "1–2 min",
       fit: "Best for deeper conversations",
-      goal: "Show how better data supports better growth monitoring and farm decisions.",
-      teaches: ["growth insight", "data quality", "measurement value"],
-      whyItWorks: "Creates a natural bridge into a fuller product conversation.",
+      goal: "Reinforce biological concepts with a quick 5-second educational popup after a workflow.",
+      teaches: ["SGR/FCR concepts", "data validation", "fish growth"],
+      whyItWorks: "Contextual learning tied directly to the data just entered, making it highly relevant.",
       capture: "Persona-tagged lead capture",
-      
+      effort: "Medium: Requires intercepting the existing ReviewSubmitStep with a new conditional sliding card UI.",
     },
   ];
 
   const boothFlow = [
     {
-      title: "1. Attract",
-      text: "Lead with a simple hook: play a farm workflow game in under 3 minutes.",
+      title: "1. Stop",
+      text: "Hook them in 3 seconds. 'Play a farm game in under 3 minutes.'",
     },
     {
-      title: "2. Engage",
-      text: "Run one short activity tied to a real farm task.",
+      title: "2. Play",
+      text: "Run one short activity tied directly to a real farm operation.",
     },
     {
-      title: "3. Explain",
-      text: "Turn the game result into a simple product takeaway in 30 seconds.",
+      title: "3. Learn",
+      text: "Connect the game to a product takeaway in 30 seconds.",
     },
     {
       title: "4. Convert",
-      text: "Capture the lead, tag their interest, and move qualified visitors to the next step.",
+      text: "Capture the lead, tag interest, and book the next step.",
     },
   ];
 
   const staffing = [
     {
       role: "Greeter",
-      text: "Stops traffic with a simple hook, not a long pitch.",
+      text: "Pulls traffic with a hook, not a pitch.",
     },
     {
       role: "Game Coach",
@@ -111,42 +112,42 @@ export default function WasSgFarmAppBoothInfographic() {
     },
     {
       role: "Closer",
-      text: "Links the game to value, qualifies the lead, and secures follow-up.",
+      text: "Connects value, qualifies, and secures follow-up.",
     },
   ];
 
   const successMetrics = [
     {
-      label: "Visitors who stop",
-      detail: "Is the booth message strong enough to interrupt foot traffic?",
+      label: "Traffic Stopped",
+      detail: "Is the booth message interrupting the aisle?",
     },
     {
-      label: "Visitors who play",
-      detail: "Is the activity attractive enough to convert attention into engagement?",
+      label: "Games Played",
+      detail: "Is the activity attractive enough to convert attention?",
     },
     {
-      label: "Leads captured",
-      detail: "Are we producing useful contacts for follow-up?",
+      label: "Leads Captured",
+      detail: "Are we producing usable contacts for follow-up?",
     },
     {
-      label: "Meetings booked",
-      detail: "Are the games generating qualified conversations?",
+      label: "Meetings Booked",
+      detail: "Are games generating commercial conversations?",
     },
     {
-      label: "Most requested workflows",
-      detail: "Which topics resonate most, such as feeding, offline use, or traceability?",
+      label: "Top Workflows",
+      detail: "Which topics resonate most (feeding, offline, etc)?",
     },
     {
-      label: "Lead quality by visitor type",
-      detail: "Are we attracting farmers, partners, regulators, or researchers?",
+      label: "Lead Quality",
+      detail: "Are we attracting farmers, partners, or regulators?",
     },
   ];
 
   const remember = [
-    "SGFarmApp supports real farm work, not just office reporting.",
-    "Daily records such as feeding, harvest, mortality, grading, and sampling can be faster and more consistent.",
-    "Offline-ready workflows matter in real farm operations.",
-    "Better records create better traceability and better insight.",
+    "Support real farm workflows, not just office reporting.",
+    "Make daily logs (feed, harvest, mortality) fast and consistent.",
+    "Prove offline-resilient behaviour actually works in the field.",
+    "Show how better records create better traceability.",
   ];
 
   return (
@@ -164,9 +165,9 @@ export default function WasSgFarmAppBoothInfographic() {
                 <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                   <div className="flex-1">
-                    <h2 className="text-2xl font-black mb-2 tracking-tight">Live Booth Leaderboard</h2>
+                    <h2 className="text-2xl font-black mb-2 tracking-tight">Real-Time Leaderboard App</h2>
                     <p className="text-emerald-50 text-sm leading-relaxed max-w-2xl font-medium">
-                      A TV screen shows live scores, game activity, and recent wins to attract attention and keep visitors engaged.
+                      A standalone React web app displayed on a TV at the booth. It polls the Gamification Service to show live rankings of the Top 10 loggers, active Bingo boards, and a scrolling activity feed—driving competitive engagement without touching the core backend.
                     </p>
                   </div>
                   <div className="flex-shrink-0">
@@ -177,16 +178,17 @@ export default function WasSgFarmAppBoothInfographic() {
                 </div>
               </div>
               <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-tight max-w-4xl">
-                Turn booth curiosity into clear product value.
+                A clearer booth strategy: use mini-games to turn curiosity into product understanding.
               </h1>
               <p className="mt-5 text-base md:text-lg leading-8 text-white/90 max-w-3xl">
-                Use short, hands-on games to show how SGFarmApp helps aquaculture teams capture data faster, preserve traceability, and work with clearer farm insight.
+                The goal is not just to attract booth traffic. The goal is to help visitors quickly understand
+                that SGFarmApp makes aquaculture data collection easier, more traceable, and more useful.
               </p>
               <div className="mt-8 flex flex-wrap gap-2.5">
                 {[
-                  "hands-on games",
+                  "short games",
                   "real farm workflows",
-                  "clear product value",
+                  "faster understanding",
                   "qualified leads",
                 ].map((item) => (
                   <span
@@ -202,10 +204,10 @@ export default function WasSgFarmAppBoothInfographic() {
             <div className="rounded-[2.5rem] bg-white/10 backdrop-blur-xl border border-white/20 p-8 self-center lg:mt-0 mt-4 shadow-3xl">
               <div className="flex items-center gap-2 mb-4">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                <div className="text-xs uppercase tracking-[0.2em] font-bold text-white/70">The desired outcome</div>
+                <div className="text-xs uppercase tracking-[0.2em] font-bold text-white/70">The core outcome</div>
               </div>
               <div className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
-                Help visitors understand SGFarmApp in under 5 minutes.
+                Make SGFarmApp feel easy, useful, and credible in under 5 minutes.
               </div>
               <div className="mt-8 space-y-3">
                 {[
@@ -229,7 +231,7 @@ export default function WasSgFarmAppBoothInfographic() {
               <div className="rounded-2xl bg-emerald-600 p-3 shadow-lg shadow-emerald-200">
                 <Target className="h-6 w-6 text-white" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">What the booth must communicate</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Key Booth Message</h2>
             </div>
             <div className="grid sm:grid-cols-2 gap-5">
               {pillars.map((item) => {
@@ -256,7 +258,7 @@ export default function WasSgFarmAppBoothInfographic() {
                 <div className="rounded-2xl bg-cyan-500 p-3 shadow-lg shadow-cyan-900/40">
                   <MessageSquare className="h-6 w-6 text-slate-950" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">What visitors should remember</h2>
+                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Core Takeaway</h2>
               </div>
               <div className="space-y-4">
                 {remember.map((item) => (
@@ -273,9 +275,9 @@ export default function WasSgFarmAppBoothInfographic() {
             </div>
             <div className="mt-auto pt-8">
               <div className="rounded-[2rem] bg-cyan-400 text-slate-950 p-6 shadow-xl shadow-cyan-950/20">
-                <div className="text-xs font-bold uppercase tracking-[0.25em] opacity-60 mb-2">Key takeaway</div>
+                <div className="text-xs font-bold uppercase tracking-[0.25em] opacity-60 mb-2">Focus on clarity</div>
                 <div className="text-sm md:text-lg font-bold leading-snug">
-                  The games are the hook. Their real job is to make the app’s value obvious, fast.
+                  The games are only the hook. Their real purpose is to make the app’s value obvious fast.
                 </div>
               </div>
             </div>
@@ -287,12 +289,12 @@ export default function WasSgFarmAppBoothInfographic() {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <div className="h-1 w-8 rounded-full bg-emerald-600" />
-                <div className="text-sm uppercase tracking-[0.25em] text-emerald-700 font-bold">The experience layer</div>
+                <div className="text-sm uppercase tracking-[0.25em] text-emerald-700 font-bold">Engagement Layer</div>
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Recommended Mini-Games</h2>
             </div>
             <div className="rounded-2xl bg-emerald-50 border border-emerald-100 text-emerald-700 px-6 py-3 text-sm font-bold shadow-sm">
-              4 complementary booth activities
+              4 Distinct Conversational Hooks
             </div>
           </div>
 
@@ -317,7 +319,7 @@ export default function WasSgFarmAppBoothInfographic() {
 
                 <div className="mt-auto space-y-6">
                   <div className="rounded-3xl bg-white/80 border border-slate-200 p-5 shadow-sm">
-                    <div className="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-extrabold mb-4">What visitors learn</div>
+                    <div className="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-extrabold mb-4">Core Concepts</div>
                     <div className="flex flex-wrap gap-2">
                       {game.teaches.map((item) => (
                         <span key={item} className="rounded-lg bg-emerald-50 border border-emerald-100/50 px-3 py-1.5 text-[10px] font-bold text-emerald-700 uppercase tracking-tight">
@@ -328,13 +330,18 @@ export default function WasSgFarmAppBoothInfographic() {
                   </div>
 
                   <div className="space-y-4">
+                    <div className="text-sm text-slate-600 leading-relaxed italic">
+                      <span className="block not-italic font-bold text-slate-900 text-xs uppercase tracking-widest mb-1">Strategic Why</span>
+                      "{game.whyItWorks}"
+                    </div>
+
                     <div className="text-sm text-slate-600 leading-relaxed">
-                      <span className="block not-italic font-bold text-slate-900 text-xs uppercase tracking-widest mb-1">Why it works</span>
-                      {game.whyItWorks}
+                      <span className="block font-bold text-slate-900 text-xs uppercase tracking-widest mb-1">Implementation Effort</span>
+                      {game.effort}
                     </div>
 
                     <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Follow-up hook</span>
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Lead Capture</span>
                       <span className="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">{game.capture}</span>
                     </div>
                   </div>
@@ -350,7 +357,7 @@ export default function WasSgFarmAppBoothInfographic() {
               <div className="rounded-2xl bg-emerald-600 p-3 shadow-lg shadow-emerald-200">
                 <ArrowRight className="h-6 w-6 text-white" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Ideal booth journey</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">The Ideal Visitor Journey</h2>
             </div>
             <div className="space-y-5">
               {boothFlow.map((item, idx) => (
@@ -374,7 +381,7 @@ export default function WasSgFarmAppBoothInfographic() {
               <div className="rounded-2xl bg-emerald-600 p-3 shadow-lg shadow-emerald-200">
                 <Users className="h-6 w-6 text-white" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Recommended booth roles</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Simplest Staffing Model</h2>
             </div>
             <div className="space-y-5">
               {staffing.map((item) => (
@@ -390,7 +397,7 @@ export default function WasSgFarmAppBoothInfographic() {
                 <div className="space-y-1">
                   <div className="text-xs font-black uppercase tracking-[0.2em] text-amber-700">Practical rule</div>
                   <div className="text-sm md:text-base font-bold text-amber-900 leading-snug">
-                    Keep responsibilities clear. Too many overlapping roles will slow the booth down.
+                    Keep roles simple. Avoid overstaffing the booth with too many overlapping responsibilities.
                   </div>
                 </div>
               </div>
@@ -406,10 +413,10 @@ export default function WasSgFarmAppBoothInfographic() {
                 <div className="rounded-2xl bg-cyan-500 p-3 shadow-lg shadow-cyan-900/40">
                   <Trophy className="h-6 w-6 text-slate-950" />
                 </div>
-                <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight italic">How we will know the booth worked</h2>
+                <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight italic">Success Metrics</h2>
               </div>
               <div className="text-base text-slate-400 font-medium leading-relaxed mb-10 max-w-xl">
-                These are the measures Dex should track to see whether booth activity is creating real commercial value.
+                Measures Dex should track to ensure the games are translating into actual commercial value.
               </div>
               <div className="grid gap-4">
                 {successMetrics.map((item) => (
@@ -424,9 +431,9 @@ export default function WasSgFarmAppBoothInfographic() {
               </div>
             </div>
             <div className="relative z-10 mt-10 p-6 rounded-[2rem] bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 shadow-xl">
-              <div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40 mb-2">Rule of thumb</div>
+              <div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40 mb-2">North Star Principle</div>
               <div className="text-base md:text-lg font-black leading-tight">
-                Optimise for qualified conversations and booked next steps, not just foot traffic.
+                Optimise for qualified conversations and booked next steps, not just raw booth traffic.
               </div>
             </div>
           </div>
@@ -438,20 +445,20 @@ export default function WasSgFarmAppBoothInfographic() {
                 <div className="rounded-2xl bg-white p-3 shadow-xl">
                   <CheckCircle2 className="h-6 w-6 text-emerald-600" />
                 </div>
-                <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight">Recommended booth setup</h2>
+                <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight">Operating Model</h2>
               </div>
 
               <div className="rounded-[2.5rem] border border-white/20 bg-white/10 backdrop-blur-xl p-8 text-2xl md:text-3xl font-black leading-tight tracking-tight shadow-inner">
-                2 live stations. <br />
-                1 simple goal. <br />
-                Clear product value.
+                2 Stations. <br />
+                1 Target. <br />
+                Total Visibility.
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6 mt-10">
                 <div className="group rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-                  <div className="text-xs uppercase tracking-[0.3em] font-black text-white/50 mb-5">Why this works</div>
+                  <div className="text-xs uppercase tracking-[0.3em] font-black text-white/50 mb-5">Why it wins</div>
                   <ul className="space-y-4">
-                    {["Supports both quick traffic and deeper conversations", "Keeps the booth active without feeling cluttered", "Gives Dex a clear path from engagement to conversion"].map((li) => (
+                    {["Handles hybrid traffic", "High energy, zero clutter", "Direct conversion path"].map((li) => (
                       <li key={li} className="flex items-center gap-3 text-sm font-bold">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
                         {li}
@@ -460,9 +467,9 @@ export default function WasSgFarmAppBoothInfographic() {
                   </ul>
                 </div>
                 <div className="group rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-                  <div className="text-xs uppercase tracking-[0.3em] font-black text-white/50 mb-5">Useful next assets</div>
+                  <div className="text-xs uppercase tracking-[0.3em] font-black text-white/50 mb-5">Action items</div>
                   <ul className="space-y-4">
-                    {["booth script", "game station copy", "lead capture fields", "post-event follow-up flow"].map((li) => (
+                    {["Booth Script", "Game Copy", "Lead Fields", "Sync Station"].map((li) => (
                       <li key={li} className="flex items-center gap-3 text-sm font-bold">
                         <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
                         {li}
@@ -476,7 +483,7 @@ export default function WasSgFarmAppBoothInfographic() {
                 <div className="group rounded-3xl bg-white/10 border border-white/15 p-6 backdrop-blur-md flex items-start gap-4 hover:bg-white/15 transition-all">
                   <CalendarCheck className="h-6 w-6 text-emerald-300 mt-1" />
                   <div className="text-sm md:text-base font-bold leading-relaxed text-white/90">
-                    Best use of this infographic: internal alignment, booth planning, and single-slide event briefing.
+                    Deploy this model for internal alignment, booth planning, and single-slide reporting.
                   </div>
                 </div>
               </div>
