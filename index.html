@@ -228,28 +228,28 @@ const pillars = [
 
         const successMetrics = [
           {
-            label: "Traffic Stopped",
-            detail: "Is the booth message interrupting the aisle?",
+            label: "Visitors who stop",
+            detail: "Is the booth message strong enough to interrupt foot traffic?",
           },
           {
-            label: "Games Played",
-            detail: "Is the activity attractive enough to convert attention?",
+            label: "Visitors who play",
+            detail: "Is the activity attractive enough to convert attention into engagement?",
           },
           {
-            label: "Leads Captured",
-            detail: "Are we producing usable contacts for follow-up?",
+            label: "Leads captured",
+            detail: "Are we producing useful contacts for follow-up?",
           },
           {
-            label: "Meetings Booked",
-            detail: "Are games generating commercial conversations?",
+            label: "Meetings booked",
+            detail: "Are the games generating qualified conversations?",
           },
           {
-            label: "Top Workflows",
-            detail: "Which topics resonate most (feeding, offline, etc)?",
+            label: "Most requested workflows",
+            detail: "Which topics resonate most, such as feeding, offline use, or traceability?",
           },
           {
-            label: "Lead Quality",
-            detail: "Are we attracting farmers, partners, or regulators?",
+            label: "Lead quality by visitor type",
+            detail: "Are we attracting farmers, partners, regulators, or researchers?",
           },
         ];
 
@@ -602,10 +602,10 @@ const pillars = [
               <div className="rounded-2xl bg-blue-500 p-4 shadow-xl shadow-blue-900/40 text-slate-950">
                 <Trophy className="h-7 w-7" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tight italic">North Star Metrics</h2>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight italic">How we will know the booth worked</h2>
             </div>
             <div className="text-base text-slate-400 font-bold leading-relaxed mb-12 max-w-xl">
-              Measure these KPIs to ensure booth activity is translating into high-quality commercial opportunities.
+              These are the measures Dex should track to see whether booth activity is creating real commercial value.
             </div>
             <div className="grid gap-4 mb-12">
               {items.map((item) => (
@@ -651,9 +651,17 @@ const pillars = [
               <div className="group/item rounded-3xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-all">
                 <div className="text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-6">Winning Edge</div>
                 <ul className="space-y-5">
-                  {["Handles hybrid flow", "High energy focus", "Conversion native"].map((li) => (
-                    <li key={li} className="flex items-center gap-4 text-sm font-black">
-                      <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" /> {li}
+                  {[
+                    { title: "Handles Hybrid Flow", desc: "Adapts instantly to peak booth rushes and quiet lulls." },
+                    { title: "High-Energy Focus", desc: "Engages visitors with fast, hands-on 3-minute game loops." },
+                    { title: "Conversion Native", desc: "Seamlessly captures and tags leads directly from gameplay." }
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-4">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)] mt-1.5 shrink-0" />
+                      <div>
+                        <div className="text-sm font-black text-white">{item.title}</div>
+                        <div className="text-xs text-slate-400 mt-1 leading-relaxed font-medium">{item.desc}</div>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -661,9 +669,18 @@ const pillars = [
               <div className="group/item rounded-3xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-all">
                 <div className="text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-6">Key Items</div>
                 <ul className="space-y-5">
-                  {["Booth Scripts", "Visual Copy", "Lead Fields", "Sync Station"].map((li) => (
-                    <li key={li} className="flex items-center gap-4 text-sm font-black">
-                      <span className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_12px_rgba(34,211,238,0.8)]" /> {li}
+                  {[
+                    { title: "Booth Scripts", desc: "Scannable 10-second hooks and 30-second qualification tracks." },
+                    { title: "Visual Copy", desc: "Printed scenario cards and boards for fast game onboarding." },
+                    { title: "Lead Fields", desc: "Minimal consent forms that auto-tag persona and pain points." },
+                    { title: "Sync Station", desc: "Dedicated dock to prove offline-first reliability in real-time." }
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-4">
+                      <span className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_12px_rgba(34,211,238,0.8)] mt-1.5 shrink-0" />
+                      <div>
+                        <div className="text-sm font-black text-white">{item.title}</div>
+                        <div className="text-xs text-slate-400 mt-1 leading-relaxed font-medium">{item.desc}</div>
+                      </div>
                     </li>
                   ))}
                 </ul>
