@@ -1,0 +1,404 @@
+import {
+  Fish,
+  Trophy,
+  ClipboardList,
+  Gauge,
+  WifiOff,
+  ScanLine,
+  Users,
+  Target,
+  ArrowRight,
+  CheckCircle2,
+  Timer,
+  MessageSquare,
+  CalendarCheck,
+  Sparkles,
+} from "lucide-react";
+
+export default function WasSgFarmAppBoothInfographic() {
+  const pillars = [
+    {
+      icon: ClipboardList,
+      title: "Less manual farm admin",
+      text: "Show that daily farm records can be faster, cleaner, and easier to capture.",
+    },
+    {
+      icon: Fish,
+      title: "Real operational traceability",
+      text: "Demonstrate how batches, locations, and farm events can stay linked over time.",
+    },
+    {
+      icon: Gauge,
+      title: "Useful farm insights",
+      text: "Help visitors see that better records lead to better visibility and decisions.",
+    },
+    {
+      icon: WifiOff,
+      title: "Field-ready reliability",
+      text: "Make offline-resilient workflows feel concrete rather than theoretical.",
+    },
+  ];
+
+  const games = [
+    {
+      name: "Feed-Wise Sprint",
+      time: "2–3 min",
+      fit: "Best for quick traffic",
+      goal: "Show that feed logging can be fast and structured without feeling heavy.",
+      teaches: ["feeding workflow", "location grouping", "simple daily logging"],
+      whyItWorks: "High-volume, low-friction entry point for busy visitors.",
+      capture: "QR for feeding checklist + product interest",
+    },
+    {
+      name: "Harvest Maths Challenge",
+      time: "3–4 min",
+      fit: "Best product differentiator",
+      goal: "Show how SGFarmApp can reduce manual calculation and sharpen harvest visibility.",
+      teaches: ["harvest workflow", "auto-calculation", "less manual reconciliation"],
+      whyItWorks: "Makes the product’s operational value easy to grasp quickly.",
+      capture: "QR for harvest worksheet + follow-up",
+    },
+    {
+      name: "Offline Ops Relay",
+      time: "4–5 min",
+      fit: "Best trust builder",
+      goal: "Make offline-first behaviour tangible through a simple logging-and-sync challenge.",
+      teaches: ["offline logging", "sync later", "field reliability"],
+      whyItWorks: "Addresses a real farm constraint that many digital tools ignore.",
+      capture: "Badge or QR at sync station",
+    },
+    {
+      name: "Batch Detective Board",
+      time: "3–5 min",
+      fit: "Best for deeper conversations",
+      goal: "Explain the batch-to-location lifecycle and why traceability matters operationally.",
+      teaches: ["batch logic", "traceability", "farm lifecycle visibility"],
+      whyItWorks: "Excellent bridge into a fuller product conversation or demo.",
+      capture: "Persona-tagged lead capture",
+    },
+  ];
+
+  const boothFlow = [
+    {
+      title: "1. Stop",
+      text: "Lead with a simple promise: play a farm workflow game in under 3 minutes.",
+    },
+    {
+      title: "2. Play",
+      text: "Guide the visitor through one short activity tied directly to a real farm operation.",
+    },
+    {
+      title: "3. Learn",
+      text: "Translate the game result into a plain-language product takeaway in 20–60 seconds.",
+    },
+    {
+      title: "4. Convert",
+      text: "Capture the lead, tag their interest, and move qualified visitors into the next step.",
+    },
+  ];
+
+  const staffing = [
+    {
+      role: "Greeter",
+      text: "Pulls aisle traffic in with a simple, relevant hook instead of a long pitch.",
+    },
+    {
+      role: "Game Coach",
+      text: "Runs the activity, keeps the pace high, and explains the mechanics clearly.",
+    },
+    {
+      role: "Closer",
+      text: "Connects the game to business value, qualifies the lead, and secures the follow-up.",
+    },
+  ];
+
+  const successMetrics = [
+    {
+      label: "Booth visitors who stop",
+      detail: "Shows whether the booth message is strong enough to interrupt foot traffic.",
+    },
+    {
+      label: "Visitors who play a game",
+      detail: "Shows whether the activity is attractive enough to convert attention into engagement.",
+    },
+    {
+      label: "Players who become leads",
+      detail: "Shows whether the booth experience is producing usable contacts for follow-up.",
+    },
+    {
+      label: "Leads who book a meeting",
+      detail: "Shows whether the games are generating qualified commercial conversations.",
+    },
+    {
+      label: "Most requested workflows",
+      detail: "Shows which topics resonate most, such as feeding, harvest, traceability, or offline use.",
+    },
+    {
+      label: "Lead quality by visitor type",
+      detail: "Separates farmers, partners, regulators, and researchers so follow-up can be tailored.",
+    },
+  ];
+
+  const remember = [
+    "SGFarmApp supports real farm workflows, not just office reporting.",
+    "Recording feeding, harvest, mortality, grading, and sampling can be simpler and more consistent.",
+    "Offline-resilient behaviour matters in real farm operations.",
+    "Better records create better traceability and better insight.",
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900">
+      <div className="max-w-7xl mx-auto p-6 md:p-10 space-y-8">
+        <section className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white shadow-2xl">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.12),transparent_24%)]" />
+          <div className="relative grid lg:grid-cols-[1.35fr_0.75fr] gap-6 p-8 md:p-10">
+            <div>
+              <div className="flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.24em] text-white/80">
+                <Sparkles className="h-4 w-4" /> Dex × SGFarmApp × WAS
+              </div>
+              <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-tight max-w-4xl">
+                A clearer booth strategy: use mini-games to turn curiosity into product understanding.
+              </h1>
+              <p className="mt-5 text-base md:text-lg leading-8 text-white/90 max-w-3xl">
+                The goal is not just to attract booth traffic. The goal is to help visitors quickly understand
+                that SGFarmApp makes aquaculture data collection easier, more traceable, and more useful.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {[
+                  "short games",
+                  "real farm workflows",
+                  "faster understanding",
+                  "qualified leads",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/90"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl bg-white/12 backdrop-blur-md border border-white/15 p-6 self-start">
+              <div className="text-sm uppercase tracking-wide text-white/75">The core outcome</div>
+              <div className="mt-3 text-2xl md:text-3xl font-semibold leading-tight">
+                Make SGFarmApp feel easy, useful, and credible in under 5 minutes.
+              </div>
+              <div className="mt-5 grid gap-3 text-sm text-white/85">
+                <div className="rounded-2xl bg-white/8 px-4 py-3">Better than a static product pitch</div>
+                <div className="rounded-2xl bg-white/8 px-4 py-3">Better than a passive screen demo</div>
+                <div className="rounded-2xl bg-white/8 px-4 py-3">Designed to create follow-up conversations</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="grid xl:grid-cols-[1.08fr_0.92fr] gap-6">
+          <div className="rounded-[2rem] bg-white border border-slate-200 shadow-lg p-6 md:p-7">
+            <div className="flex items-center gap-3 mb-5">
+              <Target className="h-6 w-6 text-emerald-600" />
+              <h2 className="text-2xl md:text-3xl font-bold">Key Booth Message</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {pillars.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="rounded-3xl bg-slate-50 border border-slate-200 p-5">
+                    <div className="flex items-center gap-3">
+                      <div className="rounded-2xl bg-emerald-100 text-emerald-700 p-2.5">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="text-lg font-semibold leading-snug">{item.title}</div>
+                    </div>
+                    <div className="mt-3 text-sm text-slate-600 leading-6">{item.text}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] bg-slate-900 text-white shadow-lg p-6 md:p-7">
+            <div className="flex items-center gap-3 mb-5">
+              <MessageSquare className="h-6 w-6 text-cyan-400" />
+              <h2 className="text-2xl md:text-3xl font-bold">The message visitors should leave with</h2>
+            </div>
+            <div className="space-y-3">
+              {remember.map((item) => (
+                <div key={item} className="rounded-3xl border border-white/10 bg-white/5 p-4 text-sm md:text-base leading-7 text-white/90">
+                  {item}
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 rounded-3xl bg-cyan-400 text-slate-950 p-5">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em]">Reader-friendly takeaway</div>
+              <div className="mt-2 text-sm md:text-base font-medium leading-7">
+                The games are only the hook. Their real purpose is to make the app’s value obvious fast.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-[2rem] bg-white border border-slate-200 shadow-lg p-6 md:p-7">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+            <div>
+              <div className="text-sm uppercase tracking-[0.2em] text-emerald-700 font-semibold">The main experience layer</div>
+              <h2 className="mt-2 text-2xl md:text-3xl font-bold">Recommended mini-games</h2>
+            </div>
+            <div className="rounded-full bg-cyan-100 text-cyan-700 px-4 py-2 text-sm font-semibold">
+              4 complementary booth activities
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+            {games.map((game) => (
+              <div key={game.name} className="rounded-3xl border border-slate-200 bg-slate-50 p-5 flex flex-col h-full">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-lg font-bold leading-snug">{game.name}</div>
+                    <div className="mt-1 flex items-center gap-2 text-sm text-emerald-700 font-medium">
+                      <Timer className="h-4 w-4" /> {game.time}
+                    </div>
+                  </div>
+                  <span className="rounded-full bg-slate-900 text-white px-3 py-1 text-[11px] font-semibold whitespace-nowrap">
+                    {game.fit}
+                  </span>
+                </div>
+
+                <div className="mt-4 text-sm text-slate-700 leading-6">{game.goal}</div>
+
+                <div className="mt-4 rounded-2xl bg-white border border-slate-200 p-4">
+                  <div className="text-xs uppercase tracking-[0.2em] text-slate-500 font-semibold">What it teaches</div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {game.teaches.map((item) => (
+                      <span key={item} className="rounded-full bg-slate-100 border border-slate-200 px-3 py-1.5 text-xs text-slate-700">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 text-sm text-slate-600 leading-6">
+                  <span className="font-semibold text-slate-900">Why it works:</span> {game.whyItWorks}
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-slate-200 text-sm text-slate-700 leading-6">
+                  <span className="font-semibold">Lead capture:</span> {game.capture}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid lg:grid-cols-[1.05fr_0.95fr] gap-6">
+          <div className="rounded-[2rem] bg-white border border-slate-200 shadow-lg p-6 md:p-7">
+            <div className="flex items-center gap-3 mb-5">
+              <ArrowRight className="h-6 w-6 text-emerald-600" />
+              <h2 className="text-2xl md:text-3xl font-bold">The ideal visitor journey</h2>
+            </div>
+            <div className="space-y-4">
+              {boothFlow.map((item, idx) => (
+                <div key={item.title} className="rounded-3xl bg-slate-50 border border-slate-200 p-5">
+                  <div className="flex items-center gap-4">
+                    <div className="h-10 w-10 shrink-0 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">
+                      {idx + 1}
+                    </div>
+                    <div className="text-lg font-semibold">{item.title}</div>
+                  </div>
+                  <div className="mt-3 ml-14 text-sm text-slate-600 leading-6">{item.text}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] bg-white border border-slate-200 shadow-lg p-6 md:p-7">
+            <div className="flex items-center gap-3 mb-5">
+              <Users className="h-6 w-6 text-emerald-600" />
+              <h2 className="text-2xl md:text-3xl font-bold">The simplest staffing model</h2>
+            </div>
+            <div className="space-y-4">
+              {staffing.map((item) => (
+                <div key={item.role} className="rounded-3xl bg-slate-50 border border-slate-200 p-5">
+                  <div className="text-lg font-semibold">{item.role}</div>
+                  <div className="mt-2 text-sm text-slate-600 leading-6">{item.text}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 rounded-3xl bg-amber-50 border border-amber-200 p-5">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Practical rule</div>
+              <div className="mt-2 text-sm md:text-base text-slate-700 leading-7">
+                Keep roles simple. Avoid overstaffing the booth with too many overlapping responsibilities.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="grid xl:grid-cols-[0.95fr_1.05fr] gap-6">
+          <div className="rounded-[2rem] bg-slate-900 text-white shadow-lg p-6 md:p-7">
+            <div className="flex items-center gap-3 mb-5">
+              <Trophy className="h-6 w-6 text-cyan-400" />
+              <h2 className="text-2xl md:text-3xl font-bold">How we will know the booth worked</h2>
+            </div>
+            <div className="text-sm text-white/70 leading-6">
+              These are the measures Dex should track to know whether the games are creating real commercial value.
+            </div>
+            <div className="mt-5 grid gap-3">
+              {successMetrics.map((item) => (
+                <div key={item.label} className="rounded-3xl border border-white/10 bg-white/5 p-4">
+                  <div className="text-sm font-semibold text-white">{item.label}</div>
+                  <div className="mt-1 text-sm text-white/75 leading-6">{item.detail}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 rounded-3xl bg-cyan-400 text-slate-950 p-5">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em]">Rule of thumb</div>
+              <div className="mt-2 text-sm md:text-base font-medium leading-7">
+                Optimise for qualified conversations and booked next steps, not just raw booth traffic.
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 text-white shadow-xl p-6 md:p-7 overflow-hidden relative">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.14),transparent_24%)]" />
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-5">
+                <CheckCircle2 className="h-6 w-6 text-emerald-400" />
+                <h2 className="text-2xl md:text-3xl font-bold">Recommended operating model</h2>
+              </div>
+              <div className="rounded-3xl border border-white/10 bg-white/8 p-5 text-xl md:text-2xl font-semibold leading-tight">
+                2 parallel play stations + 1 tabletop fallback + QR-tagged lead capture
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4 mt-5">
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <div className="text-sm uppercase tracking-[0.2em] text-white/65">Why this is strongest</div>
+                  <ul className="mt-3 space-y-2 text-sm text-white/85 leading-6">
+                    <li>• Handles both quick traffic and deeper visitors</li>
+                    <li>• Keeps booth energy high without creating clutter</li>
+                    <li>• Gives Dex a clear route from engagement to conversion</li>
+                  </ul>
+                </div>
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <div className="text-sm uppercase tracking-[0.2em] text-white/65">Next build-outs</div>
+                  <ul className="mt-3 space-y-2 text-sm text-white/85 leading-6">
+                    <li>• booth script</li>
+                    <li>• game station copy</li>
+                    <li>• lead capture fields</li>
+                    <li>• post-event follow-up flow</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-5 rounded-3xl bg-emerald-400 text-slate-950 p-5 flex items-start gap-3">
+                <CalendarCheck className="h-5 w-5 mt-0.5" />
+                <div className="text-sm md:text-base font-medium leading-7">
+                  Best use of this infographic: internal alignment, booth planning, and converting into a poster or single-slide summary.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
