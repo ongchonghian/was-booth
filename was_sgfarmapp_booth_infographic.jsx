@@ -160,6 +160,23 @@ export default function WasSgFarmAppBoothInfographic() {
               <div className="flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.24em] text-white/80">
                 <Sparkles className="h-4 w-4" /> Dex × SGFarmApp × WAS
               </div>
+              {/* Gamification Callout */}
+              <div className="col-span-1 md:col-span-3 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-3xl p-8 text-white shadow-lg mt-8 relative overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-black mb-2 tracking-tight">Real-Time Leaderboard App</h2>
+                    <p className="text-emerald-50 text-sm leading-relaxed max-w-2xl font-medium">
+                      A standalone React web app displayed on a TV at the booth. It polls the Gamification Service to show live rankings of the Top 10 loggers, active Bingo boards, and a scrolling activity feed—driving competitive engagement without touching the core backend.
+                    </p>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <span className="inline-block bg-white text-teal-700 font-black px-6 py-3 rounded-xl text-sm uppercase tracking-widest shadow-sm">
+                      Live on Booth TV
+                    </span>
+                  </div>
+                </div>
+              </div>
               <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-tight max-w-4xl">
                 A clearer booth strategy: use mini-games to turn curiosity into product understanding.
               </h1>
