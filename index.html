@@ -106,6 +106,13 @@ const pillars = [
             time: "1–2 min",
             fit: "Best for quick engagement",
             goal: "Gamify daily log completion by turning routine actions into a multi-tier streak ladder.",
+            steps: [
+              "1. Start State: Worker opens the app. The Home Screen shows a chunky progress bar: \"Today's Streak: 0/3 Logs\".",
+              "2. Action: Worker selects \"Feed Fish\" and completes the normal feeding workflow.",
+              "3. Trigger: Upon hitting \"Submit\" on the feed log, the app returns to the Home Screen.",
+              "4. Reward (Loud): The progress bar fills to \"1/3\". A full-screen overlay instantly appears: A large, bouncy gold star scales up (ease-out), accompanied by the text \"First Log of the Day!\". The overlay fades out after 3 seconds, returning the user to the Home screen.",
+              "5. Continuation: If the worker completes 2 more logs of any type, the bar hits 3/3, triggering an even larger \"Streak Master!\" confetti animation.",
+            ],
             teaches: ["daily habits", "log completion", "farm routine"],
             whyItWorks:
               "Uses existing metrics to provide instant, loud animated feedback without backend changes.",
@@ -118,6 +125,13 @@ const pillars = [
             time: "2–3 min",
             fit: "Best for exploring features",
             goal: "Encourage workers to explore different log types (Feed, Grade, Sample) to fill a Bingo card.",
+            steps: [
+              "1. Start State: Worker opens the \"Ops Bingo\" bottom sheet from the Home Screen. They see a 2x3 grid of greyed-out tiles (Feed, Grade, Sample, Dead Fish, Harvest, Withdraw).",
+              "2. Action: Worker notices \"Dead Fish\" is unlit. They go to the pen, find a mortality, and log it via the \"Dead Fish\" button.",
+              "3. Trigger: Upon submitting the mortality log, they return to the Home Screen.",
+              "4. Reward (Tactile): The \"Dead Fish\" tile on the Bingo board illuminates with a bright color (e.g., Teal). If that tile completes a row of 3, a \"Line Completed!\" toast pops up.",
+              "5. Grand Prize: If the worker lights up all 6 tiles in a single day, the overlay triggers a massive, screen-filling confetti drop (respecting prefers-reduced-motion settings).",
+            ],
             teaches: [
               "feature discovery",
               "workflow variety",
@@ -134,6 +148,12 @@ const pillars = [
             time: "1 min",
             fit: "Best trust builder",
             goal: "Gamify offline-first hygiene by rewarding workers when they clear all pending records.",
+            steps: [
+              "1. Start State: Worker has been logging offline all morning. The Home Screen shows \"Pending Records: 12\" and \"Last Sync: 4 hours ago\".",
+              "2. Action: Worker returns to the farm office (with Wi-Fi) and performs a pull-to-refresh gesture on the Home Screen.",
+              "3. Trigger: The CacheSyncManager successfully pushes all 12 records to the backend. The pending count drops to 0.",
+              "4. Reward (Audio/Visual): A subtle, satisfying \"pop\" sound plays (5-15ms duration). The background dims slightly, and a bright \"Sync Clean!\" badge animates into the center of the screen. The Home Screen updates to read \"Pending Records: 0\" and \"Last Sync: Just now\".",
+            ],
             teaches: ["offline logging", "sync habits", "field reliability"],
             whyItWorks:
               "Turns a mundane data sync action into a satisfying, badge-earning moment.",
@@ -146,6 +166,13 @@ const pillars = [
             time: "1–2 min",
             fit: "Best for deeper conversations",
             goal: "Reinforce biological concepts with a quick 5-second educational popup after a workflow.",
+            steps: [
+              "1. Start State: Worker is performing a Sampling workflow (weighing and measuring fish).",
+              "2. Action: Worker enters the data (e.g., Average Weight = 500g, Feed Type = Grower) and taps \"Submit\" on Step 3 (ReviewSubmitStep).",
+              "3. Trigger: Instead of immediately showing the green success checkmark, the app intercepts the flow (happens randomly ~20% of the time).",
+              "4. The Quiz: A high-contrast card slides up from the bottom: \"Quiz: Your fish average 500g today. Based on the 'Grower' feed type you selected, is this on track for a 30-day harvest?\" Buttons: [Yes] / [No, needs more time].",
+              "5. Reward: If they tap the correct answer, a mini-celebration animation plays right on the card, and then transitions smoothly to the final green success screen. If incorrect, a gentle \"Actually, they need about 45 more days!\" hint appears before proceeding.",
+            ],
             teaches: ["SGR/FCR concepts", "data validation", "fish growth"],
             whyItWorks:
               "Contextual learning tied directly to the data just entered, making it highly relevant.",
@@ -154,6 +181,16 @@ const pillars = [
               "Medium: Requires intercepting the existing ReviewSubmitStep with a new conditional sliding card UI.",
           },
         ];
+
+        const parseGameplayStep = (rawStep = "") => {
+          const normalized = String(rawStep).replace(/^\s*\d+\.\s*/, "").trim();
+          const splitIndex = normalized.indexOf(":");
+          if (splitIndex === -1) return { title: "", text: normalized };
+          return {
+            title: normalized.slice(0, splitIndex).trim(),
+            text: normalized.slice(splitIndex + 1).trim(),
+          };
+        };
 
         const boothFlow = [
           {
@@ -398,12 +435,26 @@ const pillars = [
                   <ArrowRight className="h-4 w-4" /> Gameplay Steps
                 </h4>
                 <ol className="space-y-3 flex-grow">
-                  {game.steps && game.steps.map((step, stepIdx) => (
-                    <li key={stepIdx} className="text-sm font-medium text-slate-700 bg-slate-50/50 p-3 rounded-2xl flex items-start gap-3 border border-slate-100">
-                      <CheckCircle2 className="h-5 w-5 text-sky-600 mt-0.5 flex-shrink-0" />
-                      <span>{step.replace(/^\d+\.\s*/, '')}</span>
-                    </li>
-                  ))}
+                  {game.steps && game.steps.map((step, stepIdx) => {
+                    const parsed = parseGameplayStep(step);
+                    return (
+                      <li key={stepIdx} className="bg-slate-50/50 p-4 rounded-2xl flex items-start gap-3 border border-slate-100">
+                        <CheckCircle2 className="h-5 w-5 text-sky-600 mt-0.5 flex-shrink-0" />
+                        <div className="min-w-0 flex-1">
+                          {parsed.title ? (
+                            <div className="mb-1.5 flex items-center gap-2">
+                              <span className="inline-flex items-center rounded-full bg-sky-50 border border-sky-100/60 px-2.5 py-1 text-[10px] font-black text-sky-800 uppercase tracking-widest">
+                                {parsed.title}
+                              </span>
+                            </div>
+                          ) : null}
+                          <div className="text-sm font-medium text-slate-700 leading-relaxed">
+                            {parsed.text}
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ol>
                 <div className="text-center pt-4 mt-6 border-t border-slate-100">
                   <span className="text-[10px] font-bold text-sky-700 uppercase tracking-widest group-hover/card:underline">
