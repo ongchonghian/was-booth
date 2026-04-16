@@ -1,4 +1,6 @@
 # SGFarm Gamification: Gameplay Step-by-Step
+> **WARNING: FOR INTERNAL BOOTH PLANNING ONLY**
+> This document outlines the booth play flow for visitors at World Aquaculture Singapore 2026. It is NOT a product specification for the SGFarmApp.
 
 This document outlines the exact step-by-step user journey for each of the 4 gamification mechanics integrated into the Android Worker App.
 

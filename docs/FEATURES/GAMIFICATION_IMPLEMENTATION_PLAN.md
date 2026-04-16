@@ -1,4 +1,6 @@
 # SGFarm Gamification Implementation Plan
+> **WARNING: FOR INTERNAL BOOTH PLANNING ONLY**
+> This implementation plan is strictly for setting up standalone demo environments for the WAS 2026 booth. It does NOT represent the engineering roadmap for the core SGFarmApp product.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 

@@ -102,35 +102,35 @@ const pillars = [
 
         const games = [
           {
-            name: "Daily Log Quest",
+            name: "Feed-Wise Sprint",
             time: "1–2 min",
             fit: "Best for quick engagement",
-            goal: "Gamify daily log completion by turning routine actions into a multi-tier streak ladder.",
+            goal: "Help visitors experience how fast and structured feed logging can be across multiple cages.",
             steps: [
-              "1. Start State: Worker opens the app. The Home Screen shows a chunky progress bar: \"Today's Streak: 0/3 Logs\".",
-              "2. Action: Worker selects \"Feed Fish\" and completes the normal feeding workflow.",
-              "3. Trigger: Upon hitting \"Submit\" on the feed log, the app returns to the Home Screen.",
-              "4. Reward (Loud): The progress bar fills to \"1/3\". A full-screen overlay instantly appears: A large, bouncy gold star scales up (ease-out), accompanied by the text \"First Log of the Day!\". The overlay fades out after 3 seconds, returning the user to the Home screen.",
-              "5. Continuation: If the worker completes 2 more logs of any type, the bar hits 3/3, triggering an even larger \"Streak Master!\" confetti animation.",
+              "1. Hook: Staff invites the visitor to try a 90-second feeding challenge.",
+              "2. Scenario: Visitor receives a card: \"You need to log feed for 3 cages before the timer ends.\"",
+              "3. Action: Visitor uses the demo tablet to select the right location(s), enter feed amounts, and submit.",
+              "4. Reveal: Staff explains that this mirrors the real SGFarmApp feeding workflow used to reduce manual recording friction.",
+              "5. Convert: Visitor scans a QR code to get the feeding checklist or request a demo.",
             ],
-            teaches: ["daily habits", "log completion", "farm routine"],
+            teaches: ["feeding records", "quick capture", "consistency"],
             whyItWorks:
-              "Uses existing metrics to provide instant, loud animated feedback without backend changes.",
-            capture: "QR for app trial + streak challenge",
+              "Turns booth curiosity into product understanding through a fast, hands-on challenge.",
+            capture: "QR for feeding checklist or demo",
             effort:
-              "Low: Reuses existing 'todayLogCount' from HomeViewModel. Just needs the new UI Overlay + Lottie animations.",
+              "Needs 1 tablet + 1 facilitator. Good for peak traffic.",
           },
           {
-            name: "Ops Bingo",
+            name: "Ops Match Board",
             time: "2–3 min",
             fit: "Best for exploring features",
-            goal: "Encourage workers to explore different log types (Feed, Grade, Sample) to fill a Bingo card.",
+            goal: "Help visitors understand the range of farm workflows SGFarmApp supports.",
             steps: [
-              "1. Start State: Worker opens the \"Ops Bingo\" bottom sheet from the Home Screen. They see a 2x3 grid of greyed-out tiles (Feed, Grade, Sample, Dead Fish, Harvest, Withdraw).",
-              "2. Action: Worker notices \"Dead Fish\" is unlit. They go to the pen, find a mortality, and log it via the \"Dead Fish\" button.",
-              "3. Trigger: Upon submitting the mortality log, they return to the Home Screen.",
-              "4. Reward (Tactile): The \"Dead Fish\" tile on the Bingo board illuminates with a bright color (e.g., Teal). If that tile completes a row of 3, a \"Line Completed!\" toast pops up.",
-              "5. Grand Prize: If the worker lights up all 6 tiles in a single day, the overlay triggers a massive, screen-filling confetti drop (respecting prefers-reduced-motion settings).",
+              "1. Hook: Staff asks the visitor to complete an \"operations board\" in under 2 minutes.",
+              "2. Scenario: The visitor sees common farm events such as feeding, mortality, grading, sampling, and harvest.",
+              "3. Action: Visitor matches each event to the right SGFarmApp workflow tile on a magnetic board or tablet screen.",
+              "4. Reveal: Staff explains that SGFarmApp supports multiple day-to-day workflows in one operational app.",
+              "5. Convert: Visitor picks the workflow they care about most and leaves contact details for a tailored follow-up.",
             ],
             teaches: [
               "feature discovery",
@@ -138,47 +138,48 @@ const pillars = [
               "comprehensive logging",
             ],
             whyItWorks:
-              "Drives horizontal adoption using chunky, tactile UI tiles and confetti rewards.",
-            capture: "QR for full feature list + demo",
+              "Shows visitors the range of farm workflows interactively.",
+            capture: "Workflow preference + contact details",
             effort:
-              "Medium: Requires a new bottom sheet UI and querying 6 existing local DAOs to determine tile states.",
+              "Works as tabletop or tablet activity. Needs QR capture flow.",
           },
           {
-            name: "Sync Clean Badge",
+            name: "Offline Ops Relay",
             time: "1 min",
             fit: "Best trust builder",
-            goal: "Gamify offline-first hygiene by rewarding workers when they clear all pending records.",
+            goal: "Show visitors that SGFarmApp can support farm work even when connectivity is patchy.",
             steps: [
-              "1. Start State: Worker has been logging offline all morning. The Home Screen shows \"Pending Records: 12\" and \"Last Sync: 4 hours ago\".",
-              "2. Action: Worker returns to the farm office (with Wi-Fi) and performs a pull-to-refresh gesture on the Home Screen.",
-              "3. Trigger: The CacheSyncManager successfully pushes all 12 records to the backend. The pending count drops to 0.",
-              "4. Reward (Audio/Visual): A subtle, satisfying \"pop\" sound plays (5-15ms duration). The background dims slightly, and a bright \"Sync Clean!\" badge animates into the center of the screen. The Home Screen updates to read \"Pending Records: 0\" and \"Last Sync: Just now\".",
+              "1. Hook: Staff says, \"Can you complete this task with no internet?\"",
+              "2. Scenario: Visitor uses a demo device in airplane mode to log a simple farm event.",
+              "3. Action: Visitor completes the record offline, then moves to the sync station.",
+              "4. Reveal: Staff shows how the record syncs once connectivity returns, proving offline resilience.",
+              "5. Convert: Visitor scans to receive the offline logging SOP or book a product walkthrough.",
             ],
             teaches: ["offline logging", "sync habits", "field reliability"],
             whyItWorks:
-              "Turns a mundane data sync action into a satisfying, badge-earning moment.",
-            capture: "Badge or QR at sync station",
+              "Demonstrates offline reliability by proving it actually works in a disconnected state.",
+            capture: "QR for offline logging SOP or walkthrough",
             effort:
-              "Low: Hooks directly into existing CacheSyncManager completion callbacks. Minor UI overlay work.",
+              "Needs 1 demo device (in airplane mode) + 1 sync station.",
           },
           {
-            name: "Sampling Micro-Quiz",
+            name: "Batch Detective",
             time: "1–2 min",
             fit: "Best for deeper conversations",
-            goal: "Reinforce biological concepts with a quick 5-second educational popup after a workflow.",
+            goal: "Help visitors understand that SGFarmApp links operational records into a traceable farm story.",
             steps: [
-              "1. Start State: Worker is performing a Sampling workflow (weighing and measuring fish).",
-              "2. Action: Worker enters the data (e.g., Average Weight = 500g, Feed Type = Grower) and taps \"Submit\" on Step 3 (ReviewSubmitStep).",
-              "3. Trigger: Instead of immediately showing the green success checkmark, the app intercepts the flow (happens randomly ~20% of the time).",
-              "4. The Quiz: A high-contrast card slides up from the bottom: \"Quiz: Your fish average 500g today. Based on the 'Grower' feed type you selected, is this on track for a 30-day harvest?\" Buttons: [Yes] / [No, needs more time].",
-              "5. Reward: If they tap the correct answer, a mini-celebration animation plays right on the card, and then transitions smoothly to the final green success screen. If incorrect, a gentle \"Actually, they need about 45 more days!\" hint appears before proceeding.",
+              "1. Hook: Staff invites the visitor to solve a \"what happened to this batch?\" challenge.",
+              "2. Scenario: Visitor sees a batch with a few events: feeding, mortality, sampling, grading, harvest.",
+              "3. Action: Visitor places the events in the most logical sequence or answers a short scenario question.",
+              "4. Reveal: Staff explains how SGFarmApp connects records across time, location, and batch.",
+              "5. Convert: Visitor chooses whether they want to see feeding, harvest, or traceability in the follow-up demo.",
             ],
-            teaches: ["SGR/FCR concepts", "data validation", "fish growth"],
+            teaches: ["traceability", "data linking", "batch insights"],
             whyItWorks:
-              "Contextual learning tied directly to the data just entered, making it highly relevant.",
-            capture: "Persona-tagged lead capture",
+              "Creates deeper conversations by showing the value of connected data.",
+            capture: "Persona-tagged demo request",
             effort:
-              "Medium: Requires intercepting the existing ReviewSubmitStep with a new conditional sliding card UI.",
+              "Best for deeper conversations. Needs 1 tablet + 1 coach.",
           },
         ];
 
@@ -282,9 +283,9 @@ const pillars = [
                 <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl" />
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                   <div className="flex-1">
-                    <h2 className="text-2xl font-black mb-2 tracking-tight">Real-Time Leaderboard App</h2>
+                    <h2 className="text-2xl font-black mb-2 tracking-tight">Live Booth Scoreboard</h2>
                     <p className="text-emerald-50 text-sm leading-relaxed max-w-2xl font-medium">
-                      A standalone React web app displayed on a TV at the booth. It polls the Gamification Service to show live rankings of the Top 10 loggers, active Bingo boards, and a scrolling activity feed—driving competitive engagement without touching the core backend.
+                      A standalone React web app displayed on a TV at the booth. It polls the event backend to show live rankings of Today's challenge completions, Most popular workflows, and Fastest feeding challenge times—driving competitive engagement without touching the core backend.
                     </p>
                   </div>
                   <div className="flex-shrink-0">
@@ -392,7 +393,7 @@ const pillars = [
                 <div className="mt-auto space-y-6">
                   <div className="rounded-3xl bg-white/80 border border-slate-200 p-5 shadow-inner">
                     <div className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-black mb-4">
-                      Trainee Focus
+                      Visitor takeaway
                     </div>
                     <div className="flex flex-wrap gap-2.5">
                       {game.teaches.map(item => (
@@ -405,11 +406,11 @@ const pillars = [
 
                   <div className="space-y-4 pt-4 border-t border-slate-100">
                     <div className="text-xs text-slate-400 font-bold italic leading-relaxed">
-                      <span className="block not-italic font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1">Strategic Intent</span>
+                      <span className="block not-italic font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1">Why this works at the booth</span>
                       "{game.whyItWorks}"
                     </div>
                     <div className="text-xs text-slate-500 font-bold leading-relaxed">
-                      <span className="block font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1">Implementation Effort</span>
+                      <span className="block font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1">Booth setup effort</span>
                       {game.effort}
                     </div>
                     <div className="flex items-center justify-between pt-2">
@@ -420,7 +421,7 @@ const pillars = [
 
                   <div className="text-center pt-2 mt-2 border-t border-slate-100/50">
                     <span className="text-[10px] font-bold text-sky-700 uppercase tracking-widest group-hover/card:underline">
-                      Flip to view gameplay steps
+                      Flip to view booth play flow
                     </span>
                   </div>
                 </div>
@@ -432,7 +433,7 @@ const pillars = [
                 style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
               >
                 <h4 className="text-sm font-black text-sky-700 uppercase tracking-[0.2em] mb-6 flex items-center gap-2 pb-4 border-b border-slate-100 shrink-0">
-                  <ArrowRight className="h-4 w-4" /> Gameplay Steps
+                  <ArrowRight className="h-4 w-4" /> Booth Play Flow
                 </h4>
                 <ol className="space-y-2.5 flex-grow min-h-0 overflow-y-auto pr-2 -mr-2">
                   {game.steps && game.steps.map((step, stepIdx) => {

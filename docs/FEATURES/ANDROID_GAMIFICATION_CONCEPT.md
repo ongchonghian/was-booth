@@ -1,4 +1,7 @@
 # Android Gamification & Mini-Games Concept
+> **WARNING: FOR INTERNAL BOOTH PLANNING ONLY**
+> This document describes a simulated "gamification" experience designed solely for trade show engagement at World Aquaculture Singapore 2026. It is NOT a product feature specification and these features should NOT be built into the core SGFarmApp for farm workers.
+
 
 **Date**: 2026-04-16
 **Target**: Android Worker App
