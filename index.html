@@ -13,22 +13,54 @@
   <div id="root"></div>
 
   <script>
+    const createLucideIcon = (iconData) => {
+      return (props) => {
+        const [tagName, attrs, children] = iconData;
+        return React.createElement(
+          tagName,
+          {
+            ...attrs,
+            ...props,
+            className: `${attrs.class || ''} ${props.className || ''}`.trim(),
+          },
+          children.map(([childTagName, childAttrs], idx) =>
+            React.createElement(childTagName, { ...childAttrs, key: idx })
+          )
+        );
+      };
+    };
+
     const {
-      Fish,
-      Trophy,
-      ClipboardList,
-      Gauge,
-      WifiOff,
-      ScanLine,
-      Users,
-      Target,
-      ArrowRight,
-      CheckCircle2,
-      Timer,
-      MessageSquare,
-      CalendarCheck,
-      Sparkles,
+      Fish: FishData,
+      Trophy: TrophyData,
+      ClipboardList: ClipboardListData,
+      Gauge: GaugeData,
+      WifiOff: WifiOffData,
+      ScanLine: ScanLineData,
+      Users: UsersData,
+      Target: TargetData,
+      ArrowRight: ArrowRightData,
+      CheckCircle2: CheckCircle2Data,
+      Timer: TimerData,
+      MessageSquare: MessageSquareData,
+      CalendarCheck: CalendarCheckData,
+      Sparkles: SparklesData,
     } = window.lucide;
+
+    const Fish = createLucideIcon(FishData);
+    const Trophy = createLucideIcon(TrophyData);
+    const ClipboardList = createLucideIcon(ClipboardListData);
+    const Gauge = createLucideIcon(GaugeData);
+    const WifiOff = createLucideIcon(WifiOffData);
+    const ScanLine = createLucideIcon(ScanLineData);
+    const Users = createLucideIcon(UsersData);
+    const Target = createLucideIcon(TargetData);
+    const ArrowRight = createLucideIcon(ArrowRightData);
+    const CheckCircle2 = createLucideIcon(CheckCircle2Data);
+    const Timer = createLucideIcon(TimerData);
+    const MessageSquare = createLucideIcon(MessageSquareData);
+    const CalendarCheck = createLucideIcon(CalendarCheckData);
+    const Sparkles = createLucideIcon(SparklesData);
 
     function WasSgFarmAppBoothInfographic() {
       const pillars = [
@@ -161,225 +193,280 @@
         "Better records create better traceability and better insight.",
       ];
 
-      return React.createElement('div', { className: "min-h-screen bg-slate-50 text-slate-900" },
-        React.createElement('div', { className: "max-w-7xl mx-auto p-6 md:p-10 space-y-8" },
+      return React.createElement('div', { className: "min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-100 selection:text-emerald-900" },
+        React.createElement('div', { className: "max-w-7xl mx-auto p-6 lg:p-12 space-y-12" },
           
-          React.createElement('section', { className: "relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white shadow-2xl" },
+          React.createElement('section', { className: "relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white shadow-2xl" },
             React.createElement('div', { className: "absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.12),transparent_24%)]" }),
-            React.createElement('div', { className: "relative grid lg:grid-cols-[1.35fr_0.75fr] gap-6 p-8 md:p-10" },
-              React.createElement('div', null,
-                React.createElement('div', { className: "flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.24em] text-white/80" },
+            React.createElement('div', { className: "relative grid lg:grid-cols-[1.35fr_0.75fr] gap-8 p-8 md:p-12" },
+              React.createElement('div', { className: "flex flex-col justify-center" },
+                React.createElement('div', { className: "flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.24em] text-white/80 font-bold" },
                   React.createElement(Sparkles, { className: "h-4 w-4" }), " Dex × SGFarmApp × WAS"
                 ),
-                React.createElement('h1', { className: "mt-4 text-3xl md:text-5xl font-bold leading-tight max-w-4xl" },
+                React.createElement('h1', { className: "mt-6 text-3xl md:text-5xl font-black leading-tight max-w-4xl tracking-tight" },
                   "A clearer booth strategy: use mini-games to turn curiosity into product understanding."
                 ),
-                React.createElement('p', { className: "mt-5 text-base md:text-lg leading-8 text-white/90 max-w-3xl" },
+                React.createElement('p', { className: "mt-6 text-base md:text-lg leading-relaxed text-white/90 max-w-3xl font-medium" },
                   "The goal is not just to attract booth traffic. The goal is to help visitors quickly understand that SGFarmApp makes aquaculture data collection easier, more traceable, and more useful."
                 ),
-                React.createElement('div', { className: "mt-6 flex flex-wrap gap-3" },
+                React.createElement('div', { className: "mt-10 flex flex-wrap gap-3" },
                   ["short games", "real farm workflows", "faster understanding", "qualified leads"].map((item) => 
-                    React.createElement('span', { key: item, className: "rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/90" }, item)
+                    React.createElement('span', { key: item, className: "rounded-full border border-white/25 bg-white/15 px-5 py-2.5 text-sm font-bold shadow-lg backdrop-blur-sm transition-all hover:bg-white/25 cursor-default hover:scale-105" }, item)
                   )
                 )
               ),
-              React.createElement('div', { className: "rounded-3xl bg-white/12 backdrop-blur-md border border-white/15 p-6 self-start" },
-                React.createElement('div', { className: "text-sm uppercase tracking-wide text-white/75" }, "The core outcome"),
-                React.createElement('div', { className: "mt-3 text-2xl md:text-3xl font-semibold leading-tight" },
+              React.createElement('div', { className: "rounded-[2.5rem] bg-white/10 backdrop-blur-xl border border-white/20 p-8 shadow-3xl self-center" },
+                React.createElement('div', { className: "flex items-center gap-2 mb-4" },
+                  React.createElement('span', { className: "h-2 w-2 rounded-full bg-cyan-400 animate-pulse" }),
+                  React.createElement('div', { className: "text-xs uppercase tracking-[0.25em] font-black text-white/70" }, "The core outcome")
+                ),
+                React.createElement('div', { className: "text-2xl md:text-3xl font-black leading-tight tracking-tight" },
                   "Make SGFarmApp feel easy, useful, and credible in under 5 minutes."
                 ),
-                React.createElement('div', { className: "mt-5 grid gap-3 text-sm text-white/85" },
-                  React.createElement('div', { className: "rounded-2xl bg-white/8 px-4 py-3" }, "Better than a static product pitch"),
-                  React.createElement('div', { className: "rounded-2xl bg-white/8 px-4 py-3" }, "Better than a passive screen demo"),
-                  React.createElement('div', { className: "rounded-2xl bg-white/8 px-4 py-3" }, "Designed to create follow-up conversations")
+                React.createElement('div', { className: "mt-8 space-y-3" },
+                  [
+                    "Better than a static product pitch",
+                    "Better than a passive screen demo",
+                    "Designed to create follow-up conversations"
+                  ].map((point) => 
+                    React.createElement('div', { key: point, className: "flex items-center gap-3 rounded-2xl bg-white/5 py-4 px-6 border border-white/5 hover:bg-white/10 transition-all cursor-default" },
+                      React.createElement('div', { className: "h-1.5 w-1.5 rounded-full bg-emerald-400" }),
+                      React.createElement('span', { className: "text-sm font-bold text-white/90" }, point)
+                    )
+                  )
                 )
               )
             )
           ),
 
-          React.createElement('section', { className: "grid xl:grid-cols-[1.08fr_0.92fr] gap-6" },
-            React.createElement('div', { className: "rounded-[2rem] bg-white border border-slate-200 shadow-lg p-6 md:p-7" },
-              React.createElement('div', { className: "flex items-center gap-3 mb-5" },
-                React.createElement(Target, { className: "h-6 w-6 text-emerald-600" }),
-                React.createElement('h2', { className: "text-2xl md:text-3xl font-bold" }, "Key Booth Message")
+          React.createElement('section', { className: "grid lg:grid-cols-2 gap-8" },
+            React.createElement('div', { className: "group rounded-[2.5rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10 transition-all hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)] flex flex-col" },
+              React.createElement('div', { className: "flex items-center gap-4 mb-10" },
+                React.createElement('div', { className: "rounded-2xl bg-emerald-600 p-3 shadow-lg shadow-emerald-200" },
+                  React.createElement(Target, { className: "h-6 w-6 text-white" })
+                ),
+                React.createElement('h2', { className: "text-2xl md:text-3xl font-black tracking-tight" }, "Key Booth Message")
               ),
-              React.createElement('div', { className: "grid sm:grid-cols-2 gap-4" },
+              React.createElement('div', { className: "grid sm:grid-cols-2 gap-5 flex-grow" },
                 pillars.map((item) => {
                   const Icon = item.icon;
-                  return React.createElement('div', { key: item.title, className: "rounded-3xl bg-slate-50 border border-slate-200 p-5" },
-                    React.createElement('div', { className: "flex items-center gap-3" },
-                      React.createElement('div', { className: "rounded-2xl bg-emerald-100 text-emerald-700 p-2.5" },
+                  return React.createElement('div', { key: item.title, className: "group/card rounded-3xl bg-slate-50 border border-slate-200 p-6 transition-all hover:bg-white hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/5 cursor-default flex flex-col h-full" },
+                    React.createElement('div', { className: "flex items-center gap-4 mb-4" },
+                      React.createElement('div', { className: "rounded-2xl bg-emerald-100 text-emerald-700 p-3 transition-colors group-hover/card:bg-emerald-600 group-hover/card:text-white" },
                         React.createElement(Icon, { className: "h-5 w-5" })
                       ),
-                      React.createElement('div', { className: "text-lg font-semibold leading-snug" }, item.title)
+                      React.createElement('div', { className: "text-lg font-black leading-tight group-hover/card:text-emerald-900 transition-colors" }, item.title)
                     ),
-                    React.createElement('div', { className: "mt-3 text-sm text-slate-600 leading-6" }, item.text)
+                    React.createElement('div', { className: "text-sm text-slate-500 font-medium leading-relaxed group-hover/card:text-slate-600 transition-colors" }, item.text)
                   );
                 })
               )
             ),
 
-            React.createElement('div', { className: "rounded-[2rem] bg-slate-900 text-white shadow-lg p-6 md:p-7" },
-              React.createElement('div', { className: "flex items-center gap-3 mb-5" },
-                React.createElement(MessageSquare, { className: "h-6 w-6 text-cyan-400" }),
-                React.createElement('h2', { className: "text-2xl md:text-3xl font-bold" }, "The message visitors should leave with")
-              ),
-              React.createElement('div', { className: "space-y-3" },
-                remember.map((item) => 
-                  React.createElement('div', { key: item, className: "rounded-3xl border border-white/10 bg-white/5 p-4 text-sm md:text-base leading-7 text-white/90" }, item)
-                )
-              ),
-              React.createElement('div', { className: "mt-5 rounded-3xl bg-cyan-400 text-slate-950 p-5" },
-                React.createElement('div', { className: "text-xs font-semibold uppercase tracking-[0.2em]" }, "Reader-friendly takeaway"),
-                React.createElement('div', { className: "mt-2 text-sm md:text-base font-medium leading-7" },
-                  "The games are only the hook. Their real purpose is to make the app’s value obvious fast."
+            React.createElement('div', { className: "rounded-[2.5rem] bg-slate-900 text-white shadow-2xl p-8 lg:p-10 relative overflow-hidden flex flex-col" },
+              React.createElement('div', { className: "absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[100px] -mr-32 -mt-32" }),
+              React.createElement('div', { className: "relative z-10 flex flex-col flex-grow" },
+                React.createElement('div', { className: "flex items-center gap-4 mb-10" },
+                  React.createElement('div', { className: "rounded-2xl bg-cyan-500 p-3 shadow-lg shadow-cyan-900/40" },
+                    React.createElement(MessageSquare, { className: "h-6 w-6 text-slate-950" })
+                  ),
+                  React.createElement('h2', { className: "text-2xl md:text-3xl font-black tracking-tight" }, "Core Takeaway")
+                ),
+                React.createElement('div', { className: "space-y-4 mb-10" },
+                  remember.map((item) => 
+                    React.createElement('div', { key: item, className: "group/item rounded-3xl border border-white/10 bg-white/5 p-5 transition-all hover:bg-white/10 hover:border-cyan-500/30 flex items-start gap-4" },
+                      React.createElement('div', { className: "h-6 w-6 shrink-0 mt-0.5 rounded-full border border-cyan-500/50 flex items-center justify-center text-[10px] font-black text-cyan-400 opacity-60 group-hover/item:opacity-100 transition-opacity" }, "✓"),
+                      React.createElement('div', { className: "text-sm md:text-base font-bold leading-relaxed text-slate-300 group-hover/item:text-white transition-colors" }, item)
+                    )
+                  )
+                ),
+                React.createElement('div', { className: "mt-auto pt-6" },
+                  React.createElement('div', { className: "rounded-[2rem] bg-cyan-400 text-slate-950 p-7 shadow-xl shadow-cyan-950/20" },
+                    React.createElement('div', { className: "text-xs font-black uppercase tracking-[0.25em] opacity-40 mb-2" }, "Reader-friendly recap"),
+                    React.createElement('div', { className: "text-base md:text-xl font-black leading-snug" },
+                      "The games are only the hook. Their real purpose is to make the app’s value obvious fast."
+                    )
+                  )
                 )
               )
             )
           ),
 
-          React.createElement('section', { className: "rounded-[2rem] bg-white border border-slate-200 shadow-lg p-6 md:p-7" },
-            React.createElement('div', { className: "flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6" },
+          React.createElement('section', { className: "rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-12" },
+            React.createElement('div', { className: "flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12" },
               React.createElement('div', null,
-                React.createElement('div', { className: "text-sm uppercase tracking-[0.2em] text-emerald-700 font-semibold" }, "The main experience layer"),
-                React.createElement('h2', { className: "mt-2 text-2xl md:text-3xl font-bold" }, "Recommended mini-games")
+                React.createElement('div', { className: "flex items-center gap-2 mb-2" },
+                  React.createElement('div', { className: "h-1.5 w-10 rounded-full bg-emerald-600" }),
+                  React.createElement('div', { className: "text-sm uppercase tracking-[0.3em] text-emerald-700 font-black" }, "Engagement Layer")
+                ),
+                React.createElement('h2', { className: "text-3xl md:text-4xl font-black tracking-tight" }, "Recommended Mini-Games")
               ),
-              React.createElement('div', { className: "rounded-full bg-cyan-100 text-cyan-700 px-4 py-2 text-sm font-semibold" },
-                "4 complementary booth activities"
+              React.createElement('div', { className: "rounded-2xl bg-emerald-50 border border-emerald-100 text-emerald-700 px-8 py-4 text-sm font-black shadow-sm" },
+                "4 Distinct Booth Hooks"
               )
             ),
 
-            React.createElement('div', { className: "grid md:grid-cols-2 xl:grid-cols-4 gap-4" },
+            React.createElement('div', { className: "grid md:grid-cols-2 xl:grid-cols-4 gap-6" },
               games.map((game) => 
-                React.createElement('div', { key: game.name, className: "rounded-3xl border border-slate-200 bg-slate-50 p-5 flex flex-col h-full" },
-                  React.createElement('div', { className: "flex items-start justify-between gap-3" },
-                    React.createElement('div', null,
-                      React.createElement('div', { className: "text-lg font-bold leading-snug" }, game.name),
-                      React.createElement('div', { className: "mt-1 flex items-center gap-2 text-sm text-emerald-700 font-medium" },
-                        React.createElement(Timer, { className: "h-4 w-4" }), " " + game.time
+                React.createElement('div', { key: game.name, className: "group/card flex flex-col h-full rounded-[2.5rem] border border-slate-200 bg-slate-50/50 p-8 transition-all hover:bg-white hover:border-emerald-200 hover:shadow-2xl hover:shadow-emerald-500/10 cursor-default" },
+                  React.createElement('div', { className: "flex items-start justify-between gap-4 mb-6 flex-wrap" },
+                    React.createElement('div', { className: "space-y-1" },
+                      React.createElement('div', { className: "text-xl font-black leading-tight tracking-tight text-slate-900 group-hover/card:text-emerald-700 transition-colors" }, game.name),
+                      React.createElement('div', { className: "flex items-center gap-2 text-xs text-slate-400 font-black uppercase tracking-widest" },
+                        React.createElement(Timer, { className: "h-3.5 w-3.5" }), game.time
                       )
                     ),
-                    React.createElement('span', { className: "rounded-full bg-slate-900 text-white px-3 py-1 text-[11px] font-semibold whitespace-nowrap" }, game.fit)
+                    React.createElement('span', { className: "shrink-0 rounded-xl bg-slate-900 text-white px-3 py-1.5 text-[9px] font-black uppercase tracking-widest shadow-lg shadow-slate-200 mt-1" }, game.fit)
                   ),
-                  React.createElement('div', { className: "mt-4 text-sm text-slate-700 leading-6" }, game.goal),
-                  React.createElement('div', { className: "mt-4 rounded-2xl bg-white border border-slate-200 p-4" },
-                    React.createElement('div', { className: "text-xs uppercase tracking-[0.2em] text-slate-500 font-semibold" }, "What it teaches"),
-                    React.createElement('div', { className: "mt-3 flex flex-wrap gap-2" },
-                      game.teaches.map((item) => 
-                        React.createElement('span', { key: item, className: "rounded-full bg-slate-100 border border-slate-200 px-3 py-1.5 text-xs text-slate-700" }, item)
+                  React.createElement('div', { className: "text-sm text-slate-500 font-bold leading-relaxed mb-8 flex-grow" }, game.goal),
+                  React.createElement('div', { className: "mt-auto space-y-6" },
+                    React.createElement('div', { className: "rounded-3xl bg-white/80 border border-slate-200 p-5 shadow-inner" },
+                      React.createElement('div', { className: "text-[9px] uppercase tracking-[0.3em] text-slate-400 font-black mb-4" }, "Trainee Focus"),
+                      React.createElement('div', { className: "flex flex-wrap gap-2.5" },
+                        game.teaches.map((item) => 
+                          React.createElement('span', { key: item, className: "rounded-xl bg-emerald-50 border border-emerald-100/50 px-3 py-2 text-[9px] font-black text-emerald-700 uppercase tracking-tight" }, item)
+                        )
+                      )
+                    ),
+                    React.createElement('div', { className: "space-y-4 pt-4 border-t border-slate-100" },
+                      React.createElement('div', { className: "text-xs text-slate-400 font-bold italic leading-relaxed" },
+                        React.createElement('span', { className: "block not-italic font-black text-slate-900 text-[10px] uppercase tracking-[0.2em] mb-1" }, "Strategic Intent"),
+                        '"' + game.whyItWorks + '"'
+                      ),
+                      React.createElement('div', { className: "flex items-center justify-between" },
+                        React.createElement('span', { className: "text-[10px] font-black text-slate-300 uppercase tracking-widest" }, "Lead Capture"),
+                        React.createElement('span', { className: "text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full" }, game.capture)
                       )
                     )
-                  ),
-                  React.createElement('div', { className: "mt-4 text-sm text-slate-600 leading-6" },
-                    React.createElement('span', { className: "font-semibold text-slate-900" }, "Why it works:"), " " + game.whyItWorks
-                  ),
-                  React.createElement('div', { className: "mt-4 pt-4 border-t border-slate-200 text-sm text-slate-700 leading-6" },
-                    React.createElement('span', { className: "font-semibold" }, "Lead capture:"), " " + game.capture
                   )
                 )
               )
             )
           ),
 
-          React.createElement('section', { className: "grid lg:grid-cols-[1.05fr_0.95fr] gap-6" },
-            React.createElement('div', { className: "rounded-[2rem] bg-white border border-slate-200 shadow-lg p-6 md:p-7" },
-              React.createElement('div', { className: "flex items-center gap-3 mb-5" },
-                React.createElement(ArrowRight, { className: "h-6 w-6 text-emerald-600" }),
-                React.createElement('h2', { className: "text-2xl md:text-3xl font-bold" }, "The ideal visitor journey")
+          React.createElement('section', { className: "grid lg:grid-cols-2 gap-8" },
+            React.createElement('div', { className: "rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10" },
+              React.createElement('div', { className: "flex items-center gap-4 mb-12" },
+                React.createElement('div', { className: "rounded-2xl bg-emerald-600 p-3 shadow-lg shadow-emerald-200 text-white" },
+                  React.createElement(ArrowRight, { className: "h-6 w-6" })
+                ),
+                React.createElement('h2', { className: "text-2xl md:text-3xl font-black tracking-tight" }, "Visitor Journey")
               ),
-              React.createElement('div', { className: "space-y-4" },
+              React.createElement('div', { className: "space-y-5" },
                 boothFlow.map((item, idx) => 
-                  React.createElement('div', { key: item.title, className: "rounded-3xl bg-slate-50 border border-slate-200 p-5" },
-                    React.createElement('div', { className: "flex items-center gap-4" },
-                      React.createElement('div', { className: "h-10 w-10 shrink-0 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold" }, idx + 1),
-                      React.createElement('div', { className: "text-lg font-semibold" }, item.title)
+                  React.createElement('div', { key: item.title, className: "group/item relative rounded-3xl bg-slate-50 border border-slate-200 p-6 transition-all hover:bg-white hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/5" },
+                    React.createElement('div', { className: "flex items-center gap-6" },
+                      React.createElement('div', { className: "h-14 w-14 shrink-0 rounded-full bg-slate-900 text-white flex items-center justify-center font-black text-xl transition-all group-hover/item:bg-emerald-600 group-hover/item:scale-110 shadow-xl" }, idx + 1),
+                      React.createElement('div', { className: "text-xl font-black text-slate-900" }, item.title)
                     ),
-                    React.createElement('div', { className: "mt-3 ml-14 text-sm text-slate-600 leading-6" }, item.text)
+                    React.createElement('div', { className: "mt-4 ml-20 text-sm md:text-base text-slate-500 font-bold leading-relaxed group-hover/item:text-slate-600 transition-colors" }, item.text)
                   )
                 )
               )
             ),
 
-            React.createElement('div', { className: "rounded-[2rem] bg-white border border-slate-200 shadow-lg p-6 md:p-7" },
-              React.createElement('div', { className: "flex items-center gap-3 mb-5" },
-                React.createElement(Users, { className: "h-6 w-6 text-emerald-600" }),
-                React.createElement('h2', { className: "text-2xl md:text-3xl font-bold" }, "The simplest staffing model")
+            React.createElement('div', { className: "rounded-[3rem] bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 lg:p-10 flex flex-col" },
+              React.createElement('div', { className: "flex items-center gap-4 mb-12" },
+                React.createElement('div', { className: "rounded-2xl bg-emerald-600 p-4 shadow-lg shadow-emerald-200 text-white" },
+                  React.createElement(Users, { className: "h-6 w-6" })
+                ),
+                React.createElement('h2', { className: "text-2xl md:text-3xl font-black tracking-tight" }, "Staffing Model")
               ),
-              React.createElement('div', { className: "space-y-4" },
+              React.createElement('div', { className: "space-y-5 flex-grow" },
                 staffing.map((item) => 
-                  React.createElement('div', { key: item.role, className: "rounded-3xl bg-slate-50 border border-slate-200 p-5" },
-                    React.createElement('div', { className: "text-lg font-semibold" }, item.role),
-                    React.createElement('div', { className: "mt-2 text-sm text-slate-600 leading-6" }, item.text)
+                  React.createElement('div', { key: item.role, className: "group/item rounded-3xl bg-slate-50 border border-slate-200 p-7 transition-all hover:bg-white hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/5" },
+                    React.createElement('div', { className: "text-xl font-black text-slate-900 mb-2 group-hover/item:text-emerald-700 transition-colors" }, item.role),
+                    React.createElement('div', { className: "text-sm md:text-base text-slate-500 font-bold leading-relaxed group-hover/item:text-slate-600 transition-colors" }, item.text)
                   )
                 )
               ),
-              React.createElement('div', { className: "mt-5 rounded-3xl bg-amber-50 border border-amber-200 p-5" },
-                React.createElement('div', { className: "text-xs font-semibold uppercase tracking-[0.2em] text-amber-700" }, "Practical rule"),
-                React.createElement('div', { className: "mt-2 text-sm md:text-base text-slate-700 leading-7" },
-                  "Keep roles simple. Avoid overstaffing the booth with too many overlapping responsibilities."
+              React.createElement('div', { className: "mt-10 pt-10 border-t border-slate-100" },
+                React.createElement('div', { className: "rounded-[2rem] bg-amber-50 border border-amber-200 p-7 flex items-start gap-5 shadow-sm shadow-amber-100" },
+                  React.createElement('div', { className: "h-10 w-10 shrink-0 rounded-full bg-amber-200 flex items-center justify-center text-amber-700 font-black text-xl" }, "!"),
+                  React.createElement('div', { className: "space-y-1" },
+                    React.createElement('div', { className: "text-xs font-black uppercase tracking-[0.3em] text-amber-700 opacity-60" }, "Rule of Thumb"),
+                    React.createElement('div', { className: "text-base font-black text-amber-950 leading-snug" },
+                      "Keep roles simple. Avoid overstaffing with overlapping responsibilities."
+                    )
+                  )
                 )
               )
             )
           ),
 
-          React.createElement('section', { className: "grid xl:grid-cols-[0.95fr_1.05fr] gap-6" },
-            React.createElement('div', { className: "rounded-[2rem] bg-slate-900 text-white shadow-lg p-6 md:p-7" },
-              React.createElement('div', { className: "flex items-center gap-3 mb-5" },
-                React.createElement(Trophy, { className: "h-6 w-6 text-cyan-400" }),
-                React.createElement('h2', { className: "text-2xl md:text-3xl font-bold" }, "How we will know the booth worked")
-              ),
-              React.createElement('div', { className: "text-sm text-white/70 leading-6" },
-                "These are the measures Dex should track to know whether the games are creating real commercial value."
-              ),
-              React.createElement('div', { className: "mt-5 grid gap-3" },
-                successMetrics.map((item) => 
-                  React.createElement('div', { key: item.label, className: "rounded-3xl border border-white/10 bg-white/5 p-4" },
-                    React.createElement('div', { className: "text-sm font-semibold text-white" }, item.label),
-                    React.createElement('div', { className: "mt-1 text-sm text-white/75 leading-6" }, item.detail)
+          React.createElement('section', { className: "grid lg:grid-cols-2 gap-8" },
+            React.createElement('div', { className: "rounded-[3.5rem] bg-slate-900 text-white shadow-2xl p-8 lg:p-12 relative overflow-hidden" },
+              React.createElement('div', { className: "absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 blur-[120px] -ml-48 -mb-48" }),
+              React.createElement('div', { className: "relative z-10 flex flex-col h-full" },
+                React.createElement('div', { className: "flex items-center gap-5 mb-10" },
+                  React.createElement('div', { className: "rounded-2xl bg-cyan-500 p-4 shadow-xl shadow-cyan-900/40 text-slate-950" },
+                    React.createElement(Trophy, { className: "h-7 w-7" })
+                  ),
+                  React.createElement('h2', { className: "text-3xl md:text-4xl font-black tracking-tight italic" }, "North Star Metrics")
+                ),
+                React.createElement('div', { className: "text-base text-slate-400 font-bold leading-relaxed mb-12 max-w-xl" },
+                  "Measure these KPIs to ensure booth activity is translating into high-quality commercial opportunities."
+                ),
+                React.createElement('div', { className: "grid gap-4 mb-12" },
+                  successMetrics.map((item) => 
+                    React.createElement('div', { key: item.label, className: "group/item rounded-[2rem] border border-white/10 bg-white/5 p-7 transition-all hover:bg-white/10 hover:border-cyan-500/30" },
+                      React.createElement('div', { className: "flex items-center justify-between mb-3" },
+                        React.createElement('div', { className: "text-lg font-black text-white group-hover/item:text-cyan-400 transition-colors tracking-tight uppercase" }, item.label),
+                        React.createElement('div', { className: "h-2 w-2 rounded-full bg-cyan-500 group-hover/item:scale-150 transition-transform shadow-[0_0_10px_#22d3ee]" })
+                      ),
+                      React.createElement('div', { className: "text-sm text-slate-400 font-bold leading-relaxed group-hover/item:text-slate-200 transition-colors" }, item.detail)
+                    )
                   )
-                )
-              ),
-              React.createElement('div', { className: "mt-5 rounded-3xl bg-cyan-400 text-slate-950 p-5" },
-                React.createElement('div', { className: "text-xs font-semibold uppercase tracking-[0.2em]" }, "Rule of thumb"),
-                React.createElement('div', { className: "mt-2 text-sm md:text-base font-medium leading-7" },
-                  "Optimise for qualified conversations and booked next steps, not just raw booth traffic."
+                ),
+                React.createElement('div', { className: "mt-auto rounded-[2rem] bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 p-8 shadow-2xl flex items-center justify-between" },
+                  React.createElement('div', { className: "text-lg md:text-2xl font-black leading-tight max-w-sm" }, "Focus on lead quality over raw traffic volumes."),
+                  React.createElement('div', { className: "h-14 w-14 shrink-0 rounded-full bg-slate-950/20 flex items-center justify-center font-black text-2xl transition-transform hover:translate-x-2" }, "→")
                 )
               )
             ),
 
-            React.createElement('div', { className: "rounded-[2rem] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 text-white shadow-xl p-6 md:p-7 overflow-hidden relative" },
-              React.createElement('div', { className: "absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.14),transparent_24%)]" }),
-              React.createElement('div', { className: "relative" },
-                React.createElement('div', { className: "flex items-center gap-3 mb-5" },
-                  React.createElement(CheckCircle2, { className: "h-6 w-6 text-emerald-400" }),
-                  React.createElement('h2', { className: "text-2xl md:text-3xl font-bold" }, "Recommended operating model")
+            React.createElement('div', { className: "rounded-[3.5rem] bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white shadow-2xl p-8 lg:p-12 overflow-hidden relative border border-emerald-500/20" },
+              React.createElement('div', { className: "absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,213,238,0.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.2),transparent_30%)]" }),
+              React.createElement('div', { className: "relative z-10 flex flex-col h-full" },
+                React.createElement('div', { className: "flex items-center gap-5 mb-10" },
+                  React.createElement('div', { className: "rounded-2xl bg-white p-4 shadow-xl text-emerald-600" },
+                    React.createElement(CheckCircle2, { className: "h-7 w-7" })
+                  ),
+                  React.createElement('h2', { className: "text-3xl md:text-4xl font-black tracking-tight" }, "Operating Model")
                 ),
-                React.createElement('div', { className: "rounded-3xl border border-white/10 bg-white/8 p-5 text-xl md:text-2xl font-semibold leading-tight" },
-                  "2 parallel play stations + 1 tabletop fallback + QR-tagged lead capture"
+                React.createElement('div', { className: "rounded-[2.5rem] border border-white/20 bg-white/10 backdrop-blur-2xl p-10 text-3xl md:text-4xl font-black leading-none tracking-tighter shadow-2xl text-center" },
+                  "2 Stations. 1 Target.",
+                  React.createElement('br'),
+                  React.createElement('span', { className: "text-cyan-300" }, "Total Visibility.")
                 ),
-                React.createElement('div', { className: "grid md:grid-cols-2 gap-4 mt-5" },
-                  React.createElement('div', { className: "rounded-3xl border border-white/10 bg-white/5 p-5" },
-                    React.createElement('div', { className: "text-sm uppercase tracking-[0.2em] text-white/65" }, "Why this is strongest"),
-                    React.createElement('ul', { className: "mt-3 space-y-2 text-sm text-white/85 leading-6" },
-                      React.createElement('li', null, "• Handles both quick traffic and deeper visitors"),
-                      React.createElement('li', null, "• Keeps booth energy high without creating clutter"),
-                      React.createElement('li', null, "• Gives Dex a clear route from engagement to conversion")
+                React.createElement('div', { className: "grid sm:grid-cols-2 gap-6 mt-12" },
+                  React.createElement('div', { className: "group/item rounded-3xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-all" },
+                    React.createElement('div', { className: "text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-6" }, "Winning Edge"),
+                    React.createElement('ul', { className: "space-y-5" },
+                      ["Handles hybrid flow", "High energy focus", "Conversion native"].map((li) => 
+                        React.createElement('li', { key: li, className: "flex items-center gap-4 text-sm font-black" },
+                          React.createElement('span', { className: "h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" }), li
+                        )
+                      )
                     )
                   ),
-                  React.createElement('div', { className: "rounded-3xl border border-white/10 bg-white/5 p-5" },
-                    React.createElement('div', { className: "text-sm uppercase tracking-[0.2em] text-white/65" }, "Next build-outs"),
-                    React.createElement('ul', { className: "mt-3 space-y-2 text-sm text-white/85 leading-6" },
-                      React.createElement('li', null, "• booth script"),
-                      React.createElement('li', null, "• game station copy"),
-                      React.createElement('li', null, "• lead capture fields"),
-                      React.createElement('li', null, "• post-event follow-up flow")
+                  React.createElement('div', { className: "group/item rounded-3xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-all" },
+                    React.createElement('div', { className: "text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-6" }, "Key Items"),
+                    React.createElement('ul', { className: "space-y-5" },
+                      ["Booth Scripts", "Visual Copy", "Lead Fields", "Sync Station"].map((li) => 
+                        React.createElement('li', { key: li, className: "flex items-center gap-4 text-sm font-black" },
+                          React.createElement('span', { className: "h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.8)]" }), li
+                        )
+                      )
                     )
                   )
                 ),
-                React.createElement('div', { className: "mt-5 rounded-3xl bg-emerald-400 text-slate-950 p-5 flex items-start gap-3" },
-                  React.createElement(CalendarCheck, { className: "h-5 w-5 mt-0.5" }),
-                  React.createElement('div', { className: "text-sm md:text-base font-medium leading-7" },
-                    "Best use of this infographic: internal alignment, booth planning, and converting into a poster or single-slide summary."
+                React.createElement('div', { className: "mt-auto pt-12" },
+                  React.createElement('div', { className: "group/item rounded-[2.5rem] bg-white/10 border border-white/20 p-8 backdrop-blur-xl flex items-start gap-6 hover:bg-white/20 transition-all shadow-xl" },
+                    React.createElement(CalendarCheck, { className: "h-8 w-8 text-emerald-300 shrink-0" }),
+                    React.createElement('div', { className: "text-sm md:text-lg font-bold leading-relaxed text-white/95" },
+                      "Deploy this model for internal alignment, stakeholder buying, and booth-floor execution."
+                    )
                   )
                 )
               )
