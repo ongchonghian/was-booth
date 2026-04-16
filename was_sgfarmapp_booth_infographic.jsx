@@ -41,109 +41,113 @@ export default function WasSgFarmAppBoothInfographic() {
 
   const games = [
     {
-      name: "Feed-Wise Sprint",
+      name: "Daily Log Quest",
+      time: "1–2 min",
+      fit: "Best for quick engagement",
+      goal: "Gamify daily log completion by turning routine actions into a multi-tier streak ladder.",
+      teaches: ["daily habits", "log completion", "farm routine"],
+      whyItWorks: "Uses existing metrics to provide instant, loud animated feedback without backend changes.",
+      capture: "QR for app trial + streak challenge",
+      effort: "Low: Reuses existing 'todayLogCount' from HomeViewModel. Just needs the new UI Overlay + Lottie animations.",
+    },
+    {
+      name: "Ops Bingo",
       time: "2–3 min",
-      fit: "Best for quick traffic",
-      goal: "Show that feed logging can be fast and structured without feeling heavy.",
-      teaches: ["feeding workflow", "location grouping", "simple daily logging"],
-      whyItWorks: "High-volume, low-friction entry point for busy visitors.",
-      capture: "QR for feeding checklist + product interest",
+      fit: "Best for exploring features",
+      goal: "Encourage workers to explore different log types (Feed, Grade, Sample) to fill a Bingo card.",
+      teaches: ["feature discovery", "workflow variety", "comprehensive logging"],
+      whyItWorks: "Drives horizontal adoption using chunky, tactile UI tiles and confetti rewards.",
+      capture: "QR for full feature list + demo",
+      effort: "Medium: Requires a new bottom sheet UI and querying 6 existing local DAOs to determine tile states.",
     },
     {
-      name: "Harvest Maths Challenge",
-      time: "3–4 min",
-      fit: "Best product differentiator",
-      goal: "Show how SGFarmApp can reduce manual calculation and sharpen harvest visibility.",
-      teaches: ["harvest workflow", "auto-calculation", "less manual reconciliation"],
-      whyItWorks: "Makes the product’s operational value easy to grasp quickly.",
-      capture: "QR for harvest worksheet + follow-up",
-    },
-    {
-      name: "Offline Ops Relay",
-      time: "4–5 min",
+      name: "Sync Clean Badge",
+      time: "1 min",
       fit: "Best trust builder",
-      goal: "Make offline-first behaviour tangible through a simple logging-and-sync challenge.",
-      teaches: ["offline logging", "sync later", "field reliability"],
-      whyItWorks: "Addresses a real farm constraint that many digital tools ignore.",
+      goal: "Gamify offline-first hygiene by rewarding workers when they clear all pending records.",
+      teaches: ["offline logging", "sync habits", "field reliability"],
+      whyItWorks: "Turns a mundane data sync action into a satisfying, badge-earning moment.",
       capture: "Badge or QR at sync station",
+      effort: "Low: Hooks directly into existing CacheSyncManager completion callbacks. Minor UI overlay work.",
     },
     {
-      name: "Batch Detective Board",
-      time: "3–5 min",
+      name: "Sampling Micro-Quiz",
+      time: "1–2 min",
       fit: "Best for deeper conversations",
-      goal: "Explain the batch-to-location lifecycle and why traceability matters operationally.",
-      teaches: ["batch logic", "traceability", "farm lifecycle visibility"],
-      whyItWorks: "Excellent bridge into a fuller product conversation or demo.",
+      goal: "Reinforce biological concepts with a quick 5-second educational popup after a workflow.",
+      teaches: ["SGR/FCR concepts", "data validation", "fish growth"],
+      whyItWorks: "Contextual learning tied directly to the data just entered, making it highly relevant.",
       capture: "Persona-tagged lead capture",
+      effort: "Medium: Requires intercepting the existing ReviewSubmitStep with a new conditional sliding card UI.",
     },
   ];
 
   const boothFlow = [
     {
       title: "1. Stop",
-      text: "Lead with a simple promise: play a farm workflow game in under 3 minutes.",
+      text: "Hook them in 3 seconds. 'Play a farm game in under 3 minutes.'",
     },
     {
       title: "2. Play",
-      text: "Guide the visitor through one short activity tied directly to a real farm operation.",
+      text: "Run one short activity tied directly to a real farm operation.",
     },
     {
       title: "3. Learn",
-      text: "Translate the game result into a plain-language product takeaway in 20–60 seconds.",
+      text: "Connect the game to a product takeaway in 30 seconds.",
     },
     {
       title: "4. Convert",
-      text: "Capture the lead, tag their interest, and move qualified visitors into the next step.",
+      text: "Capture the lead, tag interest, and book the next step.",
     },
   ];
 
   const staffing = [
     {
       role: "Greeter",
-      text: "Pulls aisle traffic in with a simple, relevant hook instead of a long pitch.",
+      text: "Pulls traffic with a hook, not a pitch.",
     },
     {
       role: "Game Coach",
-      text: "Runs the activity, keeps the pace high, and explains the mechanics clearly.",
+      text: "Runs the activity and keeps the pace high.",
     },
     {
       role: "Closer",
-      text: "Connects the game to business value, qualifies the lead, and secures the follow-up.",
+      text: "Connects value, qualifies, and secures follow-up.",
     },
   ];
 
   const successMetrics = [
     {
-      label: "Booth visitors who stop",
-      detail: "Shows whether the booth message is strong enough to interrupt foot traffic.",
+      label: "Traffic Stopped",
+      detail: "Is the booth message interrupting the aisle?",
     },
     {
-      label: "Visitors who play a game",
-      detail: "Shows whether the activity is attractive enough to convert attention into engagement.",
+      label: "Games Played",
+      detail: "Is the activity attractive enough to convert attention?",
     },
     {
-      label: "Players who become leads",
-      detail: "Shows whether the booth experience is producing usable contacts for follow-up.",
+      label: "Leads Captured",
+      detail: "Are we producing usable contacts for follow-up?",
     },
     {
-      label: "Leads who book a meeting",
-      detail: "Shows whether the games are generating qualified commercial conversations.",
+      label: "Meetings Booked",
+      detail: "Are games generating commercial conversations?",
     },
     {
-      label: "Most requested workflows",
-      detail: "Shows which topics resonate most, such as feeding, harvest, traceability, or offline use.",
+      label: "Top Workflows",
+      detail: "Which topics resonate most (feeding, offline, etc)?",
     },
     {
-      label: "Lead quality by visitor type",
-      detail: "Separates farmers, partners, regulators, and researchers so follow-up can be tailored.",
+      label: "Lead Quality",
+      detail: "Are we attracting farmers, partners, or regulators?",
     },
   ];
 
   const remember = [
-    "SGFarmApp supports real farm workflows, not just office reporting.",
-    "Recording feeding, harvest, mortality, grading, and sampling can be simpler and more consistent.",
-    "Offline-resilient behaviour matters in real farm operations.",
-    "Better records create better traceability and better insight.",
+    "Support real farm workflows, not just office reporting.",
+    "Make daily logs (feed, harvest, mortality) fast and consistent.",
+    "Prove offline-resilient behaviour actually works in the field.",
+    "Show how better records create better traceability.",
   ];
 
   return (
@@ -312,6 +316,11 @@ export default function WasSgFarmAppBoothInfographic() {
                     <div className="text-sm text-slate-600 leading-relaxed italic">
                       <span className="block not-italic font-bold text-slate-900 text-xs uppercase tracking-widest mb-1">Strategic Why</span>
                       "{game.whyItWorks}"
+                    </div>
+
+                    <div className="text-sm text-slate-600 leading-relaxed">
+                      <span className="block font-bold text-slate-900 text-xs uppercase tracking-widest mb-1">Implementation Effort</span>
+                      {game.effort}
                     </div>
 
                     <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
